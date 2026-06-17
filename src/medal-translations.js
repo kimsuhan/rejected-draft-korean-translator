@@ -10,7 +10,7 @@
     "Reduces attack delay for the first attack of a battle against known enemies during auto-battles.": "자동 전투 중 이미 아는 적과 싸울 때 첫 공격의 공격 지연을 줄입니다.",
     "Increases the maximum number of Inspiration stacks you can accumulate (100 base).": "누적 가능한 영감 중첩의 최대치를 증가시킵니다. 기본값은 100입니다.",
     "The maximum amount of Battle Speedup time you can store. Recharges at 1 minute every 2 hours.": "저장할 수 있는 전투 가속 시간의 최대치입니다. 2시간마다 1분씩 재충전됩니다.",
-    "Chance for Rough rarity sketches to appear on Redraw. (Highly Recommended for Masterpiece Archive progression)": "다시 그리기에서 러프 희귀도 스케치가 등장할 확률입니다. 걸작 아카이브 진행에 강력히 권장됩니다.",
+    "Chance for Rough rarity sketches to appear on Redraw. (Highly Recommended for Masterpiece Archive progression)": "다시 그리기에서 초안 등급 스케치가 등장할 확률입니다. 걸작 아카이브 진행에 강력히 권장됩니다.",
     "Lowers the minimum calculated probability threshold required to activate Targeted Redraw.": "타겟 다시 그리기를 활성화하는 데 필요한 계산상 최소 확률 기준을 낮춥니다.",
 
     "Feng Shui": "풍수",
@@ -44,7 +44,7 @@
     "144 victories against Poison Dart Frog.": "독화살 개구리를 상대로 144승을 달성하세요.",
     "Reach Maximum Victories on every sketch in the current Redraw.": "현재 다시 그리기의 모든 스케치에서 최대 승리에 도달하세요.",
     "Arrange Miranara, Floodseeker, Tockies, Crustal Maiden, and Imp Joker contiguously.": "미라나라, 홍수추적자, 토키즈, 크러스트 메이든, 임프 조커를 연속으로 배치하세요.",
-    "Set the Review Audit threshold to exactly 5.": "검토 감사 임계값을 정확히 5로 설정하세요.",
+    "Set the Review Audit threshold to exactly 5.": "순회 한도를 정확히 5로 설정하세요.",
     "Have 10,000× or more Attack than Max HP.": "최대 체력보다 공격을 10,000배 이상 높게 보유하세요.",
     "Trigger 321 enemy self-attacks through Hypnotize.": "최면으로 적의 자해 공격을 321회 발동하세요.",
     "Receive a negative Max HP reward down to base health.": "기본 체력까지 내려가는 음수 최대 체력 보상을 받으세요.",

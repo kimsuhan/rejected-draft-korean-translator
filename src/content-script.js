@@ -6,6 +6,10 @@
   const dictionary = globalScope.REJECTED_DRAFT_KO_TRANSLATIONS || {};
   const patterns = globalScope.REJECTED_DRAFT_KO_PATTERNS || [];
   const core = globalScope.RejectedDraftTranslatorCore;
+  const READABILITY_BATCH_SIZE = 250;
+  const MISSING_FLUSH_DELAY_MS = 500;
+  const pendingMissing = new Set();
+  let missingFlushTimer = null;
 
   if (!core || globalScope.__rejectedDraftKoTranslatorLoaded) return;
   globalScope.__rejectedDraftKoTranslatorLoaded = true;
@@ -24,24 +28,49 @@
   function readEnabled(callback) {
     const storage = getChromeStorage();
     if (!storage) return callback(DEFAULT_ENABLED);
-    storage.get({ [STORAGE_KEY]: DEFAULT_ENABLED }, (result) => {
-      callback(Boolean(result[STORAGE_KEY]));
-    });
+    try {
+      storage.get({ [STORAGE_KEY]: DEFAULT_ENABLED }, (result) => {
+        callback(Boolean(result && result[STORAGE_KEY]));
+      });
+    } catch (_error) {
+      callback(DEFAULT_ENABLED);
+    }
   }
 
   function rememberMissing(text) {
+    pendingMissing.add(text);
+    if (missingFlushTimer) return;
+    missingFlushTimer = globalScope.setTimeout(flushMissingTexts, MISSING_FLUSH_DELAY_MS);
+  }
+
+  function flushMissingTexts() {
+    missingFlushTimer = null;
+    const texts = Array.from(pendingMissing);
+    pendingMissing.clear();
+    if (!texts.length) return;
+
     const storage = getChromeStorage();
     if (!storage) {
-      console.debug("[Rejected Draft KO] missing:", text);
+      for (const text of texts) console.debug("[Rejected Draft KO] missing:", text);
       return;
     }
-    storage.get({ [MISSING_KEY]: [] }, (result) => {
-      const current = Array.isArray(result[MISSING_KEY]) ? result[MISSING_KEY] : [];
-      if (current.includes(text)) return;
-      const next = [...current, text].slice(-300);
-      storage.set({ [MISSING_KEY]: next });
-      console.debug("[Rejected Draft KO] missing:", text);
-    });
+    try {
+      storage.get({ [MISSING_KEY]: [] }, (result) => {
+        const current = Array.isArray(result && result[MISSING_KEY]) ? result[MISSING_KEY] : [];
+        const known = new Set(current);
+        const additions = texts.filter((text) => !known.has(text));
+        if (!additions.length) return;
+        const next = [...current, ...additions].slice(-300);
+        try {
+          storage.set({ [MISSING_KEY]: next });
+        } catch (_error) {
+          return;
+        }
+        for (const text of additions) console.debug("[Rejected Draft KO] missing:", text);
+      });
+    } catch (_error) {
+      for (const text of texts) console.debug("[Rejected Draft KO] missing:", text);
+    }
   }
 
   function installReadabilityStyle() {
@@ -86,33 +115,71 @@
     ));
   }
 
-  function enhanceReadability(root) {
-    if (!root || !globalScope.getComputedStyle) return;
-    installReadabilityStyle();
-    const elements = root.nodeType === 1 ? [root, ...Array.from(root.querySelectorAll("*"))] : [];
-    for (const element of elements) {
-      if (!hasOwnText(element) || element.closest("svg")) continue;
-      const color = parseRgb(globalScope.getComputedStyle(element).color);
-      if (!isMutedGray(color)) continue;
-      const disabled = element.closest("[disabled], [aria-disabled='true']");
-      element.setAttribute("data-rd-ko-readable-muted", disabled ? "disabled" : "true");
+  function collectReadableElements(root) {
+    if (!root || root.nodeType !== 1) return [];
+    const elements = [root];
+    if (typeof root.querySelectorAll === "function") {
+      elements.push(...Array.from(root.querySelectorAll("*")));
     }
+    return elements;
+  }
+
+  function enhanceReadabilityElement(element) {
+    if (!element || !hasOwnText(element) || element.closest("svg")) return;
+    const color = parseRgb(globalScope.getComputedStyle(element).color);
+    if (!isMutedGray(color)) return;
+    const disabled = element.closest("[disabled], [aria-disabled='true']");
+    element.setAttribute("data-rd-ko-readable-muted", disabled ? "disabled" : "true");
+  }
+
+  function createReadabilityScheduler() {
+    const pending = new Set();
+    let scheduled = false;
+
+    function process() {
+      scheduled = false;
+      installReadabilityStyle();
+      let processed = 0;
+      for (const element of Array.from(pending)) {
+        pending.delete(element);
+        if (element && element.isConnected !== false) enhanceReadabilityElement(element);
+        processed += 1;
+        if (processed >= READABILITY_BATCH_SIZE) break;
+      }
+      if (pending.size) schedule();
+    }
+
+    function schedule() {
+      if (scheduled) return;
+      scheduled = true;
+      const requestFrame = globalScope.requestAnimationFrame || ((callback) => globalScope.setTimeout(callback, 16));
+      requestFrame(process);
+    }
+
+    return {
+      add(root) {
+        if (!root || !globalScope.getComputedStyle) return;
+        for (const element of collectReadableElements(root)) pending.add(element);
+        schedule();
+      },
+    };
   }
 
   function start() {
     if (!isSupportedPage() || !globalScope.document || !globalScope.document.body) return;
     readEnabled((enabled) => {
       if (!enabled) return;
-      enhanceReadability(globalScope.document.body);
+      const readability = createReadabilityScheduler();
+      readability.add(globalScope.document.body);
       const translator = core.createTranslator(dictionary, { onMissingText: rememberMissing, patterns });
       const disconnect = translator.observe(globalScope.document.body, globalScope.MutationObserver);
       const readabilityObserver = new globalScope.MutationObserver((mutations) => {
         for (const mutation of mutations) {
           if (mutation.type === "childList") {
-            for (const node of mutation.addedNodes || []) enhanceReadability(node);
+            for (const node of mutation.addedNodes || []) readability.add(node);
           }
-          if (mutation.type === "characterData") enhanceReadability(mutation.target.parentElement);
-          if (mutation.type === "attributes") enhanceReadability(mutation.target);
+          if (mutation.type === "characterData") readability.add(mutation.target.parentElement);
+          if (mutation.type === "attributes") readability.add(mutation.target);
         }
       });
       readabilityObserver.observe(globalScope.document.body, {

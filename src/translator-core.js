@@ -3,6 +3,7 @@
   const ELEMENT_NODE = 1;
   const SKIP_TAGS = new Set(["SCRIPT", "STYLE", "NOSCRIPT", "TEMPLATE", "TEXTAREA", "INPUT"]);
   const ATTRIBUTES = ["aria-label", "title", "alt", "placeholder", "value"];
+  const TRANSLATION_BATCH_SIZE = 350;
 
   function normalizeText(value) {
     return String(value || "").replace(/\s+/g, " ").trim();
@@ -76,17 +77,88 @@
       return { translated: translateNode(root) };
     }
 
+    function collectTranslationNodes(root) {
+      if (!root) return [];
+      if (root.nodeType === TEXT_NODE) return [root];
+      if (root.nodeType !== ELEMENT_NODE || SKIP_TAGS.has(root.tagName)) return [];
+
+      const nodes = [root];
+      const walker = globalScope.document && globalScope.document.createTreeWalker
+        ? globalScope.document.createTreeWalker(root, 5)
+        : null;
+      if (!walker) return nodes;
+
+      let node = walker.nextNode();
+      while (node) {
+        if (node.nodeType === ELEMENT_NODE && SKIP_TAGS.has(node.tagName)) {
+          node = walker.nextSibling();
+          continue;
+        }
+        nodes.push(node);
+        node = walker.nextNode();
+      }
+      return nodes;
+    }
+
+    function translateSingleNode(node) {
+      if (!node) return 0;
+      if (node.nodeType === TEXT_NODE) {
+        const result = translateString(node.nodeValue);
+        if (result.changed) {
+          node.nodeValue = result.value;
+          return 1;
+        }
+        return 0;
+      }
+      if (node.nodeType === ELEMENT_NODE && !SKIP_TAGS.has(node.tagName)) {
+        return translateAttributes(node);
+      }
+      return 0;
+    }
+
+    function createTranslationScheduler() {
+      const pending = new Set();
+      let scheduled = false;
+
+      function process() {
+        scheduled = false;
+        let processed = 0;
+        for (const node of Array.from(pending)) {
+          pending.delete(node);
+          if (node && node.isConnected !== false) translateSingleNode(node);
+          processed += 1;
+          if (processed >= TRANSLATION_BATCH_SIZE) break;
+        }
+        if (pending.size) schedule();
+      }
+
+      function schedule() {
+        if (scheduled) return;
+        scheduled = true;
+        const requestFrame = globalScope.requestAnimationFrame || ((callback) => globalScope.setTimeout(callback, 16));
+        requestFrame(process);
+      }
+
+      return {
+        add(root) {
+          for (const node of collectTranslationNodes(root)) pending.add(node);
+          schedule();
+        },
+      };
+    }
+
     function observe(root, MutationObserverImpl) {
-      translateTree(root);
       const Observer = MutationObserverImpl || globalScope.MutationObserver;
       if (!Observer) return () => {};
+      const scheduler = createTranslationScheduler();
+      scheduler.add(root);
       const observer = new Observer((mutations) => {
         for (const mutation of mutations) {
           if (mutation.type === "childList") {
-            for (const node of mutation.addedNodes || []) translateNode(node);
+            for (const node of mutation.addedNodes || []) scheduler.add(node);
           }
-          if (mutation.type === "characterData") translateNode(mutation.target);
-          if (mutation.type === "attributes") translateAttributes(mutation.target);
+          if (mutation.type === "characterData") scheduler.add(mutation.target);
+          if (mutation.type === "attributes") scheduler.add(mutation.target);
         }
       });
       observer.observe(root, {

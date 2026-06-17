@@ -90,7 +90,7 @@
     "Loadout Preset {slot} loaded.": "로드아웃 프리셋 {slot}을 불러왔습니다.",
     "Loadout Preset {slot} saved successfully.": "로드아웃 프리셋 {slot}을 저장했습니다.",
     "Autosynthesized Milestone for {currency}.": "{currency} 마일스톤을 자동 합성했습니다.",
-    "Conceptual Milestone for {currency} ready. Congrats on reaching a new one!": "{currency} 개념 마일스톤이 준비되었습니다. 새 마일스톤 도달을 축하합니다!",
+    "Conceptual Milestone for {currency} ready. Congrats on reaching a new one!": "{currency} 착상 마일스톤이 준비되었습니다. 새 마일스톤 도달을 축하합니다!",
     "Encountered: {name}": "조우: {name}",
     "Unscrambled: {name}": "해독됨: {name}",
     "New version unlocked: {name}!": "새 버전 해금: {name}!",

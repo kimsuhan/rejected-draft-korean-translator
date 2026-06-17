@@ -51,7 +51,7 @@
     "Curious Cat": "호기심 많은 고양이",
     "Cursed Marionette": "저주받은 꼭두각시",
     "Cyber Skull": "사이버 해골",
-    "Danger Noodle": "위험 국수",
+    "Danger Noodle": "위험한 뱀",
     "Dark Tater": "다크 테이터",
     "David (*)": "다비드 (*)",
     "Deep Diver": "심해 잠수부",
