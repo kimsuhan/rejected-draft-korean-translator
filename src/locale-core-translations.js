@@ -569,6 +569,7 @@
     "Bonus Quintessence production for Graphite Concept in Conceptual Synthesizer.": "개념 합성기의 흑연 개념에 대한 정수 생산 보너스.",
     "Quintessence Gain": "정수 획득",
     "Quintessence Pinnacle": "정수 정점",
+    "Multiplies Pending Quintessence gain based on the number of sketches that have reached their Maximum Victories during the current Redraw cycle. Boosting your Max Victories limit also provides an exponential increase to this effect. Formula: (1 + (Max Victories / 10000)) ^ (# of Maxed Sketches)": "현재 다시 그리기 주기에서 최대 승리에 도달한 스케치 수에 따라 대기 중인 정수 획득량을 배가합니다. 최대 승리 한도를 올리면 이 효과도 지수적으로 증가합니다. 공식: (1 + (최대 승리 / 10000)) ^ (최대치 도달 스케치 수)",
     "Total number of times you have redrawn the world.": "세계를 다시 그린 총 횟수.",
     "Multiplier for the Reward Booster tool.": "보상 부스터 도구의 배율.",
     "Booster Power": "부스터 출력",

@@ -1,6 +1,13 @@
 (function initRejectedDraftPatterns(globalScope) {
   const glossary = globalScope.REJECTED_DRAFT_KO_GLOSSARY || {};
   const t = (value) => glossary[value] || globalScope.REJECTED_DRAFT_KO_TRANSLATIONS?.[value] || value;
+  const scrollingTipTranslations = globalScope.REJECTED_DRAFT_KO_SCROLLING_TIP_TRANSLATIONS || {};
+  const scrollingTipLabels = globalScope.REJECTED_DRAFT_KO_SCROLLING_TIP_LABELS || {};
+  const escapeRegExp = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const scrollingTipBodies = Object.keys(scrollingTipTranslations).map(escapeRegExp);
+  const scrollingTipPattern = scrollingTipBodies.length
+    ? new RegExp(`^(TIP|팁|CRITIQUE|비평|FACT|사실|JOKE|농담|LPT|생활 팁) (#.+): (${scrollingTipBodies.join("|")})$`)
+    : /^$/;
 
   globalScope.REJECTED_DRAFT_KO_PATTERNS = [
     [/^Gallery Tutorial: (.+)$/, "갤러리 튜토리얼: $1"],
@@ -25,11 +32,18 @@
     [/^Feat Achieved: (.+)!$/, (_text, name) => `업적 달성: ${t(name)}!`],
     [/^(.+) is affordable!$/, (_text, name) => `${t(name)} 구매 가능!`],
     [/^(TIP|팁) (#.+): Top right icon on each sketch on Gallery page can hide sketches that are of no use to you\.$/, (_text, _label, id) => `팁 ${id}: 갤러리 페이지에서 각 스케치 오른쪽 위 아이콘을 누르면 쓸모없는 스케치를 숨길 수 있습니다.`],
+    [/^(TIP|팁) (#.+): You can review the Tutorial anytime in Settings\.$/, (_text, _label, id) => `팁 ${id}: 튜토리얼은 설정에서 언제든 다시 볼 수 있습니다.`],
     [/^(CRITIQUE|비평) (#.+): I hope you're not playing this at work\. Or do\. I'm not HR\.$/, (_text, _label, id) => `비평 ${id}: 직장에서 이 게임을 하고 있지 않길 바랍니다. 뭐, 해도 됩니다. 저는 HR이 아니니까요.`],
+    [/^(JOKE|농담) (#.+): The painter was hospitalized\. Doctors say he had too many strokes\.$/, (_text, _label, id) => `농담 ${id}: 화가가 입원했습니다. 의사 말로는 붓질이 너무 많았다네요.`],
+    [/^(JOKE|농담) (#.+): Shout out to people who don't know what the opposite of 'in' is\.$/, (_text, _label, id) => `농담 ${id}: 'in'의 반대말을 모르는 분들께 한마디. out!`],
     [/^(FACT|사실) (#.+): The average person spends 6 months of their life waiting for red lights to turn green\.$/, (_text, _label, id) => `사실 ${id}: 평균적인 사람은 평생 6개월을 빨간불이 초록불로 바뀌길 기다리며 보냅니다.`],
     [/^(FACT|사실) (#.+): John Steinbeck used up to 60 pencils a day\. He would have loved auto-battle\.$/, (_text, _label, id) => `사실 ${id}: John Steinbeck은 하루에 연필을 최대 60자루까지 썼습니다. 자동 전투를 꽤 좋아했을 겁니다.`],
+    [/^(FACT|사실) (#.+): Archaeologists have found edible honey in ancient Egyptian tombs\. It never spoils\.$/, (_text, _label, id) => `사실 ${id}: 고고학자들은 고대 이집트 무덤에서 아직 먹을 수 있는 꿀을 발견했습니다. 꿀은 상하지 않습니다.`],
     [/^(LPT|생활 팁) (#.+): Fix your posture\. Your future back will thank you\.$/, (_text, _label, id) => `생활 팁 ${id}: 자세를 바로잡으세요. 미래의 허리가 고마워할 겁니다.`],
     [/^(TIP|팁) (#.+): After unlocking Portfolio Review tool, it may be worthwhile to unhide all sketches and squeeze them for more\.$/, (_text, _label, id) => `팁 ${id}: 포트폴리오 검토 도구를 해금했다면 숨겨 둔 스케치를 모두 다시 표시해서 보상을 더 챙겨 볼 만합니다.`],
+    [/^(TIP|팁) (#.+): The "locks" at top of sidebars make them retractable\.$/, (_text, _label, id) => `팁 ${id}: 사이드바 상단의 "잠금"을 누르면 접어 둘 수 있습니다.`],
+    [/^(TIP|팁) (#.+): Fleeing isn't just for escaping; use it to quickly rotate through sketches searching for specific rewards\.$/, (_text, _label, id) => `팁 ${id}: 도망은 탈출용만이 아닙니다. 원하는 보상을 찾을 때 스케치를 빠르게 돌려 보는 데도 쓰세요.`],
+    [/^(TIP|팁) (#.+): Statuses like Poison are effective against tanky sketches\.$/, (_text, _label, id) => `팁 ${id}: ${t("Poison")} 같은 상태 효과는 튼튼한 스케치에게 효과적입니다.`],
     [/^(LPT|생활 팁) (#.+): Floss your teeth\. You only need to floss the ones you want to keep\.$/, (_text, _label, id) => `생활 팁 ${id}: 치실을 쓰세요. 계속 쓰고 싶은 치아에만 쓰면 됩니다.`],
     [/^(FACT|사실) (#.+): The Eiffel Tower can be 15 cm taller during the summer due to thermal expansion\.$/, (_text, _label, id) => `사실 ${id}: 에펠탑은 열팽창 때문에 여름에 최대 15cm 더 높아질 수 있습니다.`],
     [/^(CRITIQUE|비평) (#.+): A redraw is just a fancy word for professional procrastination\.$/, (_text, _label, id) => `비평 ${id}: 다시 그리기는 전문적인 미루기를 그럴듯하게 부르는 말일 뿐입니다.`],
@@ -38,6 +52,7 @@
     [/^(FACT|사실) (#.+): The first pencils were made of solid graphite wrapped in sheepskin\.$/, (_text, _label, id) => `사실 ${id}: 최초의 연필은 양가죽으로 감싼 고체 흑연으로 만들어졌습니다.`],
     [/^(JOKE|농담) (#.+): I tried to paint the sky, but I blue it\.$/, (_text, _label, id) => `농담 ${id}: 하늘을 칠하려 했는데, 파랗게 질려 버렸습니다.`],
     [/^(TIP|팁) (#.+): There are other flavors for this text \(see settings\): Snarky Comments \(Critiques\), Life Pro Tips \(LPT\), Jokes, and Facts\.$/, (_text, _label, id) => `팁 ${id}: 이 문구에는 다른 종류도 있습니다(설정에서 확인): 빈정거리는 코멘트(비평), 생활 팁(LPT), 농담, 사실.`],
+    [scrollingTipPattern, (_text, label, id, body) => `${scrollingTipLabels[label] || label} ${id}: ${scrollingTipTranslations[body]}`],
     [/^TIP (#.+)$/, "팁 $1"],
     [/^FACT (#.+)$/, "사실 $1"],
     [/^CRITIQUE (#.+)$/, "비평 $1"],
@@ -58,13 +73,19 @@
     [/^([+-][\d.]+%) (.+) cost (.+) cost reduction\. Applies to both Tools and Stat Upgrades\.$/, (_text, amount, titleCurrency, bodyCurrency) => `${t(titleCurrency)} 비용 ${amount}\n${t(bodyCurrency)} 비용 감소. 도구와 능력치 업그레이드 모두에 적용됩니다.`],
     [/^([+-][\d.]+%) (.+) cost (.+) 비용 감소\. 도구와 능력치 업그레이드 모두에 적용됩니다\.$/, (_text, amount, titleCurrency, bodyCurrency) => `${t(titleCurrency)} 비용 ${amount}\n${t(bodyCurrency)} 비용 감소. 도구와 능력치 업그레이드 모두에 적용됩니다.`],
     [/^\+([\d.]+%) (.+) rewards$/, (_text, amount, currency) => `${t(currency)} 보상 +${amount}`],
+    [/^스케치 격파로 얻는 \+([\d.]+%) (.+) rewards (.+) 보상 배율\.$/, (_text, amount, titleCurrency, bodyCurrency) => `${t(titleCurrency)} 보상 +${amount}\n스케치 격파로 얻는 ${t(bodyCurrency)} 보상 배율.`],
     [/^\+([\d.]+) (.+) rewards exp\.$/, (_text, amount, currency) => `${t(currency)} 보상 지수 +${amount}`],
     [/^(.+) Bonus (.+) percentage\. \+([\d.]+%)$/, (_text, titleStat, bodyStat, amount) => `${t(titleStat)} 보너스\n${t(bodyStat)} 비율. +${amount}`],
     [/^(.+) rarity chance Chance for (.+) rarity sketches to appear on Redraw\. \(Highly Recommended for Masterpiece Archive progression\) \+([\d.]+%)$/, (_text, titleRarity, bodyRarity, amount) => `${t(titleRarity)} 희귀도 확률\n다시 그리기에서 ${t(bodyRarity)} 희귀도 스케치가 등장할 확률입니다. 걸작 아카이브 진행에 강력히 권장됩니다. +${amount}`],
     [/^([+-][\d.]+%) Attack Delay$/, (_text, amount) => `공격 지연 ${amount}`],
     [/^([+-][\d.]+%) Attack Delay Attack delay reduction\.$/, (_text, amount) => `공격 지연 ${amount}\n공격 지연 감소.`],
     [/^([+-][\d.]+%) Attack Delay 공격 지연 감소\.$/, (_text, amount) => `공격 지연 ${amount}\n공격 지연 감소.`],
+    [/^([+-][\d.]+s) flee penalty Wait time after fleeing\.$/, (_text, amount) => `도망 패널티 ${amount.replace("s", "초")}\n도망 후 대기 시간.`],
+    [/^도망 패널티 ([+-][\d.]+초) Wait time after fleeing\.$/, (_text, amount) => `도망 패널티 ${amount}\n도망 후 대기 시간.`],
     [/^([+-][\d.]+) Decay Factor Controls how fast rewards decay per victory\. Reward after n kills = base \/ \(1 \+ n × decay\)\. Lower values mean slower decay and more total rewards\.$/, (_text, amount) => `감쇠 계수 ${amount}\n승리당 보상이 얼마나 빠르게 감소하는지 제어합니다. n회 처치 후 보상 = 기본값 / (1 + n × 감소). 값이 낮을수록 감소가 느리고 총 보상이 많아집니다.`],
+    [/^Automated Workflow Preserve active protocol state Tools auto-enabled on redraw, starting from top of active protocols list\.$/, "자동화 워크플로\n활성 프로토콜 상태를 유지합니다\n\n다시 그리기 시 활성 프로토콜 목록 위쪽부터 도구가 자동 활성화됩니다."],
+    [/^자동화 워크플로 Preserve active protocol state Tools auto-enabled on redraw, starting from top of active protocols list\.$/, "자동화 워크플로\n활성 프로토콜 상태를 유지합니다\n\n다시 그리기 시 활성 프로토콜 목록 위쪽부터 도구가 자동 활성화됩니다."],
+    [/^Preserve active protocol state Tools auto-enabled on redraw, starting from top of active protocols list\.$/, "활성 프로토콜 상태를 유지합니다\n\n다시 그리기 시 활성 프로토콜 목록 위쪽부터 도구가 자동 활성화됩니다."],
     [/^Start with free tools Tools unlocked on redraw, starting from top of tools list\.$/, "무료 도구를 가지고 시작합니다\n다시 그리기 시 도구 목록 위쪽부터 해금되는 도구."],
     [/^Start with free tools 다시 그리기 시 도구 목록 위쪽부터 해금되는 도구\.$/, "무료 도구를 가지고 시작합니다\n다시 그리기 시 도구 목록 위쪽부터 해금되는 도구."],
     [/^\+([\d.]+) Inspiration Stack Cap$/, (_text, amount) => `영감 중첩 상한 +${amount}`],
@@ -74,6 +95,11 @@
     [/^([\d.]+%) multiplier$/, (_text, amount) => `${amount} 배율`],
     [/^First Ever Softcap in: (.+)$/, (_text, duration) => `첫 소프트캡까지: ${duration}`],
     [/^REQUIRES (.+) PENDING QUINTESSENCE$/, (_text, count) => `대기 중인 정수 ${count} 필요`],
+    [/^REQUIRES (\d+) ([A-Z]+) SKETCH(?:ES)? IN GLOSSARY$/, (_text, count, rarity) => `용어집에 ${t(rarity[0] + rarity.slice(1).toLowerCase())} 스케치 ${count}개 필요`],
+    [/^REQUIRES (\d+) ([A-Z]+) SKETCH(?:ES)? IN GLOSSARY Current: (.+)$/, (_text, count, rarity, current) => `용어집에 ${t(rarity[0] + rarity.slice(1).toLowerCase())} 스케치 ${count}개 필요\n현재: ${current}`],
+    [/^REQUIRES (\d+) ([A-Z]+) SKETCH(?:ES)? IN$/, (_text, count, rarity) => `필요: ${t(rarity[0] + rarity.slice(1).toLowerCase())} 스케치 ${count}개`],
+    [/^GLOSSARY$/, "용어집"],
+    [/^Current: (.+)$/, "현재: $1"],
     [/^\+([\d.]+) Max Victories$/, (_text, amount) => `최대 승리 +${amount}`],
     [/^\+([\d.]+) Time Acceleration$/, (_text, amount) => `시간 가속 +${amount}`],
     [/^\+([\d.]+)min max speedup time$/, (_text, amount) => `최대 가속 시간 +${amount}분`],

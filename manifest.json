@@ -27,6 +27,7 @@
         "src/tutorial-story-translations.js",
         "src/gameplay-ui-translations.js",
         "src/misc-translations.js",
+        "src/scrolling-tip-translations.js",
         "src/patterns.js",
         "src/translator-core.js",
         "src/content-script.js"

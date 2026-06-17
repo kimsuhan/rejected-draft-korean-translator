@@ -36,6 +36,7 @@
     "Defeat Fountain Pen Duelist.": "만년필 결투가를 격파하세요.",
     "Reach Maximum Victories on any sketch.": "아무 스케치에서 최대 승리에 도달하세요.",
     "Use Precise Eraser on a sketch that is already at Maximum Victories.": "이미 최대 승리에 도달한 스케치에 정밀 지우개를 사용하세요.",
+    "Click the \"Buy Me a Coffee\" link in Settings, twice.": "설정에서 \"Buy Me a Coffee\" 링크를 두 번 클릭하세요.",
     "Multiplicatively increased by Feat Medal Base (x{value}) per medal. Multiplies all currency rewards.": "메달을 하나 살 때마다 업적 메달 기준값(x{value})만큼 곱연산으로 증가합니다. 모든 재화 보상에 적용됩니다.",
     "Mult": "배율",
     "Defeat Nascent Paragon.": "초기 파라곤을 격파하세요.",

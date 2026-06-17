@@ -85,6 +85,8 @@
     "Battle Stick Man on Redraw": "다시 그리기 후 졸라맨과 전투합니다",
     "Automatically starts combat after a Redraw.": "다시 그리기 후 전투를 자동으로 시작합니다.",
     "Persistent Momentum": "지속되는 추진력",
+    "Unlocks a customizable \"% Buy\" button that spends a fixed portion of your total Quintessence.": "총 정수의 정해진 비율만큼 소비하는 맞춤형 \"% 구매\" 버튼을 해금합니다.",
+    "When using Booster on Opus sketches, the Negative effect is divided by booster amount instead of being multiplied. When used on already defeated sketches with Reward Siphon, does not subtract any extra stats, nor does it refund/add stats.": "오푸스 스케치에 부스터를 사용하면 부정 효과는 부스터 수치만큼 곱해지지 않고 나눠집니다. 이미 격파한 스케치에 보상 흡수와 함께 사용할 경우 추가 능력치를 차감하지 않으며, 능력치를 환불하거나 더해 주지도 않습니다.",
     "Enable battle speedup charge": "전투 가속 충전을 활성화합니다",
     "Shop purchases no longer consume currency": "상점 구매가 더 이상 재화를 소모하지 않습니다",
     "Free Market": "자유 시장",

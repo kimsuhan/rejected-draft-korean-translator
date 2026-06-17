@@ -24,14 +24,15 @@ The actual game runs inside an iframe from `https://kuzzigames.com/rejected_draf
 - `src/tutorial-story-translations.js`: tutorial modals and story entries.
 - `src/gameplay-ui-translations.js`: tools, glossary, multiverse, shortcuts, gallery, battle, archive, and meditation UI.
 - `src/misc-translations.js`: credits, language names, offline summary, prestige, Steam copy, and remaining locale strings.
-- `src/patterns.js`: pattern translations for dynamic labels such as tutorial steps, victory counts, facts, and tips.
+- `src/scrolling-tip-translations.js`: scrolling tip, critique, joke, fact, and life-pro-tip text.
+- `src/patterns.js`: pattern translations for dynamic labels such as tutorial steps, victory counts, rewards, requirements, and tooltips.
 - `src/translator-core.js`: DOM text and attribute translator.
 - `src/content-script.js`: turns on translation, watches DOM changes, and logs untranslated English phrases.
 - `popup.html` / `popup.js`: translation toggle and missing-text export.
 
 ## Current Coverage
 
-Verified against the visible entry flow, including the opening gallery, premise text, theme selection, gallery tutorial, first battle, and the first post-victory unlock state. The extension also includes locale-derived translations for later-game tabs, stats, shop labels, settings, notifications, skill-tree labels, feat medals, story, tutorial, credits, Steam copy, and repeated dynamic descriptions. Current downloaded English locale coverage is 3130 / 3130 English-bearing strings (100.0%). Future game updates can still be expanded through the missing-text export flow.
+Verified against the visible entry flow, including the opening gallery, premise text, theme selection, gallery tutorial, first battle, and the first post-victory unlock state. The extension also includes locale-derived translations for later-game tabs, stats, shop labels, settings, notifications, skill-tree labels, feat medals, story, tutorial, credits, Steam copy, scrolling tips, and repeated dynamic descriptions. Current downloaded English locale coverage is 3064 / 3064 unique English-bearing strings (100.0%). Future game updates can still be expanded through the missing-text export flow.
 
 ## Expanding the Translation
 
@@ -44,5 +45,5 @@ Verified against the visible entry flow, including the opening gallery, premise 
 ## Validation
 
 ```bash
-node -e "JSON.parse(require('node:fs').readFileSync('manifest.json','utf8')); for (const f of ['src/glossary-translations.js','src/translations.js','src/locale-core-translations.js','src/sketch-name-translations.js','src/sketch-flavor-translations.js','src/skill-translations.js','src/medal-translations.js','src/stat-translations.js','src/ui-message-translations.js','src/tutorial-story-translations.js','src/gameplay-ui-translations.js','src/misc-translations.js','src/patterns.js','src/translator-core.js','src/content-script.js','popup.js']) new Function(require('node:fs').readFileSync(f,'utf8')); console.log('syntax ok')"
+node -e "JSON.parse(require('node:fs').readFileSync('manifest.json','utf8')); for (const f of ['src/glossary-translations.js','src/translations.js','src/locale-core-translations.js','src/sketch-name-translations.js','src/sketch-flavor-translations.js','src/skill-translations.js','src/medal-translations.js','src/stat-translations.js','src/ui-message-translations.js','src/tutorial-story-translations.js','src/gameplay-ui-translations.js','src/misc-translations.js','src/scrolling-tip-translations.js','src/patterns.js','src/translator-core.js','src/content-script.js','popup.js']) new Function(require('node:fs').readFileSync(f,'utf8')); console.log('syntax ok')"
 ```
