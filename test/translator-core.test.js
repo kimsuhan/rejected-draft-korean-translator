@@ -427,6 +427,8 @@ test("extension dictionary covers combined stat tooltip bodies", () => {
     new ElementNode("p", {}, [new TextNode("Dodge Chance (Unaffected by Decay Factor)\nPercent chance to completely avoid an\nincoming attack, avoiding damage and\nstatus effects. Countered by the attacker's\nAccuracy stat.")]),
     new ElementNode("p", {}, [new TextNode("Critical Chance (Unaffected by Decay\nFactor)\nPercent chance to land a Critical Hit,\nmultiplying damage by Critical Damage.\nCountered by the target's Glancing Blow\nchance.")]),
     new ElementNode("p", {}, [new TextNode("Armor\nFlat damage subtracted from every incoming\nhit after all other calculations. Reduced by\nthe attacker's Armor Penetration.")]),
+    new ElementNode("p", {}, [new TextNode("Armor Penetration\nFlat amount of the target's Armor ignored\nwhen calculating damage reduction.\nEffectively increases damage against\narmored targets.")]),
+    new ElementNode("p", {}, [new TextNode("Frailty Chance\nChance to apply Frailty. Each stack\nincreases final damage taken by 1%. Values\nover 100% allow for multiple applications per\nhit.")]),
   ]);
   const translator = createTranslator(global.REJECTED_DRAFT_KO_TRANSLATIONS, {
     patterns: global.REJECTED_DRAFT_KO_PATTERNS,
@@ -446,6 +448,8 @@ test("extension dictionary covers combined stat tooltip bodies", () => {
   assert.equal(root.childNodes[9].textContent, "회피 확률 (감쇠 계수의 영향을 받지 않음)\n받는 공격을 완전히 피해서 피해와 상태 효과를 회피할 확률입니다. 공격자의 명중 능력치로 대응됩니다.");
   assert.equal(root.childNodes[10].textContent, "치명타 확률 (감쇠 계수의 영향을 받지 않음)\n치명타를 적중시켜 피해에 치명타 피해 배율을 적용할 확률입니다. 대상의 스침 방어 확률로 대응됩니다.");
   assert.equal(root.childNodes[11].textContent, "방어력\n다른 모든 계산 이후 받는 모든 타격에서 차감되는 고정 피해량입니다. 공격자의 방어 관통으로 감소합니다.");
+  assert.equal(root.childNodes[12].textContent, "방어 관통\n피해 감소 계산 시 대상의 방어력 중 무시하는 고정 수치입니다. 방어력이 있는 대상에게 주는 피해를 실질적으로 높입니다.");
+  assert.equal(root.childNodes[13].textContent, "취약 확률\n취약을 적용할 확률입니다. 각 중첩은 받는 최종 피해를 1% 증가시킵니다. 100%를 넘는 값은 한 타격에 여러 번 적용될 수 있습니다.");
 });
 
 test("extension patterns cover dynamic battle notifications", () => {
