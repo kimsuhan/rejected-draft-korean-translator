@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Rejected Draft KO verification fixture</title>
+  </head>
+  <body>
+    <main id="app">
+      <button aria-label="No battle in progress">Battle</button>
+      <h3>Stick Man</h3>
+      <p>Art is pain. Inflict it and reclaim your glory.</p>
+      <button>Challenge</button>
+    </main>
+    <script src="../src/translations.js"></script>
+    <script src="../src/locale-core-translations.js"></script>
+    <script src="../src/sketch-name-translations.js"></script>
+    <script src="../src/sketch-flavor-translations.js"></script>
+    <script src="../src/skill-translations.js"></script>
+    <script src="../src/medal-translations.js"></script>
+    <script src="../src/stat-translations.js"></script>
+    <script src="../src/ui-message-translations.js"></script>
+    <script src="../src/tutorial-story-translations.js"></script>
+    <script src="../src/gameplay-ui-translations.js"></script>
+    <script src="../src/misc-translations.js"></script>
+    <script src="../src/patterns.js"></script>
+    <script src="../src/translator-core.js"></script>
+    <script>
+      const translator = RejectedDraftTranslatorCore.createTranslator(REJECTED_DRAFT_KO_TRANSLATIONS, {
+        patterns: REJECTED_DRAFT_KO_PATTERNS,
+      });
+      translator.observe(document.body, MutationObserver);
+      setTimeout(() => {
+        const next = document.createElement("button");
+        next.textContent = "Rewards";
+        document.querySelector("#app").append(next);
+      }, 0);
+    </script>
+  </body>
+</html>

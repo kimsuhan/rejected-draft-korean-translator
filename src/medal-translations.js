@@ -1,0 +1,57 @@
+(function initRejectedDraftMedalTranslations(globalScope) {
+  const target = globalScope.REJECTED_DRAFT_KO_TRANSLATIONS || {};
+  Object.assign(target, {
+    "Selected Favorite": "선택된 즐겨찾기",
+    "Set as Favorite: This version will be used permanently, overriding the default redraw cycle.": "즐겨찾기로 설정: 이 버전이 기본 다시 그리기 순서를 덮어쓰고 영구적으로 사용됩니다.",
+    "Sketches": "스케치",
+    "Sketch": "스케치",
+
+    "Multiplies all currency rewards. Increased multiplicatively by Feat Medal Base per purchased Feat Medal. Applied before exponents.": "모든 재화 보상을 곱합니다. 구매한 업적 메달마다 업적 메달 기본값에 따라 곱연산으로 증가합니다. 지수보다 먼저 적용됩니다.",
+    "Reduces attack delay for the first attack of a battle against known enemies during auto-battles.": "자동 전투 중 이미 아는 적과 싸울 때 첫 공격의 공격 지연을 줄입니다.",
+    "Increases the maximum number of Inspiration stacks you can accumulate (100 base).": "누적 가능한 영감 중첩의 최대치를 증가시킵니다. 기본값은 100입니다.",
+    "The maximum amount of Battle Speedup time you can store. Recharges at 1 minute every 2 hours.": "저장할 수 있는 전투 가속 시간의 최대치입니다. 2시간마다 1분씩 재충전됩니다.",
+    "Chance for Rough rarity sketches to appear on Redraw. (Highly Recommended for Masterpiece Archive progression)": "다시 그리기에서 러프 희귀도 스케치가 등장할 확률입니다. 걸작 아카이브 진행에 강력히 권장됩니다.",
+    "Lowers the minimum calculated probability threshold required to activate Targeted Redraw.": "타겟 다시 그리기를 활성화하는 데 필요한 계산상 최소 확률 기준을 낮춥니다.",
+
+    "Feng Shui": "풍수",
+    "Arrangement medals for displaying specific groups of sketches together in the Gallery. Hide unrelated sketches to isolate the group; maxed sketches can be unhidden and still count.": "갤러리에서 특정 스케치 그룹을 함께 표시하는 배치 메달입니다. 관련 없는 스케치는 숨겨 그룹을 분리하세요. 최대치에 도달한 스케치는 숨김 해제해도 계속 인정됩니다.",
+    "General": "일반",
+    "Broad progress medals. Most unlock naturally as you play the game and make numbers go up.": "전반적인 진행 메달입니다. 대부분은 게임을 플레이하며 숫자를 키우다 보면 자연스럽게 해금됩니다.",
+    "Collection milestones for defeating sketches in each rarity. Each rarity awards medals at 25%, 50%, 75%, and full Glossary completion.": "각 희귀도 스케치를 격파하는 수집 마일스톤입니다. 희귀도마다 용어집 완성도 25%, 50%, 75%, 100%에서 메달을 줍니다.",
+    "Specs": "능력치",
+    "Medals for reaching notable battle spec values. Most follow normal progression, while later targets may need a focused setup or strategy.": "주요 전투 능력치 값에 도달하는 메달입니다. 대부분은 정상 진행을 따르지만 후반 목표는 전용 세팅이나 전략이 필요할 수 있습니다.",
+    "Medals for building out the Shop toolkit and putting those tools to work, from unlocking more options to using specialized tools often.": "상점 도구 구성을 확장하고 실제로 사용하는 메달입니다. 더 많은 선택지 해금부터 특수 도구 반복 사용까지 포함합니다.",
+    "True Feats": "진정한 업적",
+    "Unusual achievements that reward experimentation and out-of-the-box thinking. Some clues are cryptic, but the Medal X-Ray tool can eventually reveal exactly how to earn each one.": "실험과 색다른 사고를 보상하는 특수 업적입니다. 일부 단서는 모호하지만, 메달 X-레이 도구가 결국 각 메달 획득 방법을 정확히 보여줄 수 있습니다.",
+
+    "Defeat Awakened Paragon.": "각성 파라곤을 격파하세요.",
+    "Remove a total of 1,000,000,000 debuff stacks with Clean Slate.": "클린 슬레이트로 디버프 중첩을 총 1,000,000,000개 제거하세요.",
+    "Scroll to the very bottom of the Credits modal.": "크레딧 모달의 맨 아래까지 스크롤하세요.",
+    "Set Tip Frequency to Continuous and Categories to Critique only.": "팁 빈도를 연속으로, 카테고리를 비평만으로 설정하세요.",
+    "Have 0 guaranteed sketches selected while you have at least 25 total slots.": "총 슬롯이 25개 이상일 때 확정 스케치를 0개로 선택하세요.",
+    "Use Precise Eraser on the Erased Face sketch.": "지워진 얼굴 스케치에 정밀 지우개를 사용하세요.",
+    "Arrange Cyber Skull, Griffin Head, Crystal Dragon, Broken Astronaut, and Burnished Wyvern contiguously.": "사이버 해골, 그리핀 머리, 수정 드래곤, 부서진 우주비행사, 광낸 와이번을 연속으로 배치하세요.",
+    "Complete your first Redraw.": "첫 다시 그리기를 완료하세요.",
+    "Unscramble the name of any sketch.": "아무 스케치의 이름을 해독하세요.",
+    "Defeat Fountain Pen Duelist.": "만년필 결투가를 격파하세요.",
+    "Reach Maximum Victories on any sketch.": "아무 스케치에서 최대 승리에 도달하세요.",
+    "Use Precise Eraser on a sketch that is already at Maximum Victories.": "이미 최대 승리에 도달한 스케치에 정밀 지우개를 사용하세요.",
+    "Multiplicatively increased by Feat Medal Base (x{value}) per medal. Multiplies all currency rewards.": "메달을 하나 살 때마다 업적 메달 기준값(x{value})만큼 곱연산으로 증가합니다. 모든 재화 보상에 적용됩니다.",
+    "Mult": "배율",
+    "Defeat Nascent Paragon.": "초기 파라곤을 격파하세요.",
+    "Reach 69,000,000 total victories across all redraws.": "모든 다시 그리기 전체에서 총 69,000,000승에 도달하세요.",
+    "144 victories against Poison Dart Frog.": "독화살 개구리를 상대로 144승을 달성하세요.",
+    "Reach Maximum Victories on every sketch in the current Redraw.": "현재 다시 그리기의 모든 스케치에서 최대 승리에 도달하세요.",
+    "Arrange Miranara, Floodseeker, Tockies, Crustal Maiden, and Imp Joker contiguously.": "미라나라, 홍수추적자, 토키즈, 크러스트 메이든, 임프 조커를 연속으로 배치하세요.",
+    "Set the Review Audit threshold to exactly 5.": "검토 감사 임계값을 정확히 5로 설정하세요.",
+    "Have 10,000× or more Attack than Max HP.": "최대 체력보다 공격을 10,000배 이상 높게 보유하세요.",
+    "Trigger 321 enemy self-attacks through Hypnotize.": "최면으로 적의 자해 공격을 321회 발동하세요.",
+    "Receive a negative Max HP reward down to base health.": "기본 체력까지 내려가는 음수 최대 체력 보상을 받으세요.",
+    "Reach 1500 or lower Attack Delay (SPD).": "공격 지연(SPD)을 1500 이하로 낮추세요.",
+    "Defeat Tangled Spider.": "엉킨 거미를 격파하세요.",
+    "Defeat The False Paragon.": "거짓 파라곤을 격파하세요.",
+    "Defeat Transcendent Paragon.": "초월 파라곤을 격파하세요.",
+    "Go to Glossary, click art icon bottom left of any sketch that has multiple versions, then heart in top right of any version.": "용어집으로 가서 여러 버전이 있는 아무 스케치의 왼쪽 아래 아트 아이콘을 누른 뒤, 아무 버전의 오른쪽 위 하트를 누르세요."
+  });
+  globalScope.REJECTED_DRAFT_KO_TRANSLATIONS = target;
+})(typeof globalThis !== "undefined" ? globalThis : window);

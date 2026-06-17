@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Rejected Draft Korean Translator",
+  "version": "0.1.0",
+  "description": "Korean DOM text translator for Rejected Draft on Galaxy.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://galaxy.click/play/733*",
+    "https://kuzzigames.com/rejected_draft/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://galaxy.click/play/733*",
+        "https://kuzzigames.com/rejected_draft/*"
+      ],
+      "js": [
+        "src/translations.js",
+        "src/locale-core-translations.js",
+        "src/sketch-name-translations.js",
+        "src/sketch-flavor-translations.js",
+        "src/skill-translations.js",
+        "src/medal-translations.js",
+        "src/stat-translations.js",
+        "src/ui-message-translations.js",
+        "src/tutorial-story-translations.js",
+        "src/gameplay-ui-translations.js",
+        "src/misc-translations.js",
+        "src/patterns.js",
+        "src/translator-core.js",
+        "src/content-script.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_title": "Rejected Draft KO",
+    "default_popup": "popup.html"
+  }
+}
