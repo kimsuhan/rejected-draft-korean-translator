@@ -1,5 +1,6 @@
 (function initRejectedDraftTranslations(globalScope) {
-  globalScope.REJECTED_DRAFT_KO_TRANSLATIONS = {
+  const target = globalScope.REJECTED_DRAFT_KO_TRANSLATIONS || {};
+  Object.assign(target, {
     "A-Z": "가나다순",
     "All": "전체",
     "Angry accident.": "화난 사고뭉치.",
@@ -32,7 +33,7 @@
     "Fundamentals": "기초",
     "Gallery": "갤러리",
     "Glossary Multiplier": "용어집 배율",
-    "GRA": "영감",
+    "GRA": "흑연",
     "HP": "체력",
     "Language (Non-English translations are incomplete. Help us translate! Join Discord for info)": "언어 (영어 외 번역은 아직 불완전합니다. 번역을 돕고 싶다면 Discord에 참여하세요)",
     "MND": "정신",
@@ -86,5 +87,6 @@
     "Your Journey Begins": "여정의 시작",
     "Your Progression": "성장 진행도",
     "You": "나"
-  };
+  });
+  globalScope.REJECTED_DRAFT_KO_TRANSLATIONS = target;
 })(typeof globalThis !== "undefined" ? globalThis : window);

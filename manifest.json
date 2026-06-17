@@ -15,6 +15,7 @@
         "https://kuzzigames.com/rejected_draft/*"
       ],
       "js": [
+        "src/glossary-translations.js",
         "src/translations.js",
         "src/locale-core-translations.js",
         "src/sketch-name-translations.js",

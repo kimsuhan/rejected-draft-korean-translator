@@ -14,6 +14,7 @@ The actual game runs inside an iframe from `https://kuzzigames.com/rejected_draf
 
 ## How It Works
 
+- `src/glossary-translations.js`: shared glossary for currencies, stats, status effects, and abbreviations.
 - `src/translations.js`: Korean dictionary.
 - `src/locale-core-translations.js`: locale-derived common UI, stat, shop, setting, and skill-tree dictionary.
 - `src/skill-translations.js`: later skill-tree names, descriptions, and flavor text.
@@ -37,11 +38,11 @@ Verified against the visible entry flow, including the opening gallery, premise 
 1. Play the game with the extension enabled.
 2. Open the extension popup.
 3. Click "미번역 문구 복사".
-4. Add copied English phrases to `src/translations.js`.
+4. Add repeated terms to `src/glossary-translations.js`; add fixed phrases to the best matching `src/*-translations.js` file; add dynamic phrases to `src/patterns.js`.
 5. Reload the extension from `chrome://extensions` and refresh the game.
 
-## Test
+## Validation
 
 ```bash
-node --test test/translator-core.test.js
+node -e "JSON.parse(require('node:fs').readFileSync('manifest.json','utf8')); for (const f of ['src/glossary-translations.js','src/translations.js','src/locale-core-translations.js','src/sketch-name-translations.js','src/sketch-flavor-translations.js','src/skill-translations.js','src/medal-translations.js','src/stat-translations.js','src/ui-message-translations.js','src/tutorial-story-translations.js','src/gameplay-ui-translations.js','src/misc-translations.js','src/patterns.js','src/translator-core.js','src/content-script.js','popup.js']) new Function(require('node:fs').readFileSync(f,'utf8')); console.log('syntax ok')"
 ```

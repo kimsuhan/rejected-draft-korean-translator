@@ -430,7 +430,7 @@
     "Lethargic Ash": "무기력한 재",
     "Quick Strokes": "빠른 붓질",
     "{value}% multiplier": "{value}% 배율",
-    "{value}% divider": "{value}% 나눗셈",
+    "{value}% divider": "{value}% 속도 보정",
 
     "Acrylic Discount": "아크릴 할인",
     "Acrylic Generator": "아크릴 생성기",
