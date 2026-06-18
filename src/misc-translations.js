@@ -19,7 +19,7 @@
     "It has begun to collapse under its own evolution. Muscles swell beyond proportion, armor grows directly from flesh, and entire sections of the body mutate into competing designs. Every absorbed sketch fights for dominance at once. The Paragon mistakes escalation for ascension.": "그것은 자신의 진화 아래 무너지기 시작했습니다. 근육은 비례를 넘어 부풀고, 갑옷은 살에서 직접 자라나며, 몸의 여러 부분은 서로 경쟁하는 디자인으로 변이합니다. 흡수한 모든 스케치가 동시에 지배권을 다툽니다. 파라곤은 확대를 승천으로 착각합니다.",
     "Unknown Aberration": "알 수 없는 변이체",
     "Polynomial Growth": "다항 성장",
-    "Pending Quintessence accumulates here and can be claimed by pressing Redraw. Note that efficiency drops once you exceed your Lifetime Total (or 1000 initially) in a single run. Redrawing locks in gains and pushes that threshold higher.": "대기 중인 정수는 여기에 쌓이며 다시 그리기를 누르면 수령됩니다. 단일 실행에서 평생 총량(초기에는 1000)을 초과하면 효율이 떨어집니다. 다시 그리기는 획득량을 확정하고 그 기준치를 더 높입니다.",
+    "Pending Quintessence accumulates here and can be claimed by pressing Redraw. Note that efficiency drops once you exceed your Lifetime Total (or 1000 initially) in a single run. Redrawing locks in gains and pushes that threshold higher.": "대기 중인 정수는 여기에 쌓이며 다시 그리기를 누르면 수령됩니다. 한 번에 평생 총량(처음에는 1000)을 넘기면 정수 획득량이 소프트캡에 눌립니다. 다시 그리기는 획득량을 확정하고 그 기준치를 더 높입니다.",
     "The Redraw (Prestige)": "다시 그리기 (환생)",
     "Rough Rarity Encounter": "초안 등급 조우",
     "The Soft Truth": "부드러운 진실",
@@ -146,7 +146,7 @@
 
     "Current Softcap": "현재 소프트캡",
     "Doubling Time": "두 배 시간",
-    "Efficiency": "효율",
+    "Efficiency": "소프트캡 보정",
     "First Softcap": "첫 소프트캡",
     "QE Gain": "QE 획득",
     "Gain Multiplier": "획득 배율",
