@@ -1,49 +1,50 @@
-# Rejected Draft Korean Translator
+# Rejected Draft Korean Polish Patch
 
-Chrome MV3 extension that translates the DOM text of Rejected Draft into Korean with a local dictionary and `MutationObserver`.
+Chrome MV3 extension that polishes the official Korean UI for Rejected Draft with local DOM replacements. It also fills in English text that is still missing from the official Korean build.
 
 ## Install
 
 1. Open Chrome Extensions: `chrome://extensions`.
 2. Enable Developer mode.
 3. Click "Load unpacked".
-4. Select this folder: `galaxy-korean-translator`.
+4. Select this folder: `rejected-draft-korean-translator`.
 5. Open or refresh `https://galaxy.click/play/733`.
 
 The actual game runs inside an iframe from `https://kuzzigames.com/rejected_draft/`, so the extension injects into both the Galaxy wrapper and the original game URL.
 
 ## How It Works
 
-- `src/glossary-translations.js`: shared glossary for currencies, stats, status effects, and abbreviations.
-- `src/translations.js`: Korean dictionary.
-- `src/locale-core-translations.js`: locale-derived common UI, stat, shop, setting, and skill-tree dictionary.
-- `src/skill-translations.js`: later skill-tree names, descriptions, and flavor text.
-- `src/medal-translations.js`: feat-medal categories, tasks, and remaining glossary/fundamental labels.
-- `src/stat-translations.js`: battle-stat tooltip and vulnerability descriptions.
-- `src/ui-message-translations.js`: settings, notification, and common UI messages.
-- `src/tutorial-story-translations.js`: tutorial modals and story entries.
-- `src/gameplay-ui-translations.js`: tools, glossary, multiverse, shortcuts, gallery, battle, archive, and meditation UI.
-- `src/misc-translations.js`: credits, language names, offline summary, prestige, Steam copy, and remaining locale strings.
-- `src/scrolling-tip-translations.js`: scrolling tip, critique, joke, fact, and life-pro-tip text.
-- `src/patterns.js`: pattern translations for dynamic labels such as tutorial steps, victory counts, rewards, requirements, and tooltips.
-- `src/translator-core.js`: DOM text and attribute translator.
-- `src/content-script.js`: turns on translation, watches DOM changes, and logs untranslated English phrases.
-- `popup.html` / `popup.js`: translation toggle and missing-text export.
+- `src/registry.js`: shared registration helpers for glossary, fixed translations, and pattern groups.
+- `src/glossary/`: common currencies, combat stats, status effects, rarities, and abbreviations.
+- `src/polish/official-ko-fixes.js`: official Korean wording polish, such as awkward labels or tone fixes.
+- `src/fallback/`: older English-to-Korean fallback coverage for text that still leaks through.
+- `src/sketches/names.js`: sketch/enemy names only.
+- `src/sketches/flavor.js`: sketch flavor and description text.
+- `src/skills/`: archive and combat skill names, effects, descriptions, and flavor text.
+- `src/medals/`: feat-medal names, categories, tasks, and descriptions.
+- `src/stats/tooltips.js`: battle-stat tooltip and vulnerability descriptions.
+- `src/ui/`: settings, notifications, tutorial/story, gameplay UI, and scrolling tips.
+- `src/patterns/`: dynamic pattern groups for numbers, time, notifications, rewards, requirements, medals, gameplay, and tooltips.
+- `src/core/translator-core.js`: DOM text and attribute replacement engine.
+- `src/core/content-script.js`: turns on the polish patch, watches DOM changes, and logs remaining English phrases.
+- `popup.html` / `popup.js`: polish-patch toggle and remaining-English export.
 
 ## Current Coverage
 
-Verified against the visible entry flow, including the opening gallery, premise text, theme selection, gallery tutorial, first battle, and the first post-victory unlock state. The extension also includes locale-derived translations for later-game tabs, stats, shop labels, settings, notifications, skill-tree labels, feat medals, story, tutorial, credits, Steam copy, scrolling tips, and repeated dynamic descriptions. Current downloaded English locale coverage is 3064 / 3064 unique English-bearing strings (100.0%). Future game updates can still be expanded through the missing-text export flow.
+The game now has official Korean support. This extension is kept as a lightweight polish layer: it improves awkward official Korean wording, keeps game-UI terminology consistent, and covers English strings that still leak through the Korean build. The older English-to-Korean dictionary remains as fallback coverage.
 
-## Expanding the Translation
+## Expanding the Patch
 
-1. Play the game with the extension enabled.
-2. Open the extension popup.
-3. Click "미번역 문구 복사".
-4. Add repeated terms to `src/glossary-translations.js`; add fixed phrases to the best matching `src/*-translations.js` file; add dynamic phrases to `src/patterns.js`.
-5. Reload the extension from `chrome://extensions` and refresh the game.
+1. Play the game in official Korean with the extension enabled.
+2. Use the popup to copy remaining English phrases when needed.
+3. Add repeated terms to the right `src/glossary/*.js` file.
+4. Add official Korean wording fixes to `src/polish/official-ko-fixes.js`.
+5. Add English fallback text to the best matching domain folder, such as `src/sketches/`, `src/skills/`, `src/ui/`, or `src/fallback/`.
+6. Add dynamic phrases to the best matching `src/patterns/*.js` file.
+7. Reload the extension from `chrome://extensions` and refresh the game.
 
 ## Validation
 
 ```bash
-node -e "JSON.parse(require('node:fs').readFileSync('manifest.json','utf8')); for (const f of ['src/glossary-translations.js','src/translations.js','src/locale-core-translations.js','src/sketch-name-translations.js','src/sketch-flavor-translations.js','src/skill-translations.js','src/medal-translations.js','src/stat-translations.js','src/ui-message-translations.js','src/tutorial-story-translations.js','src/gameplay-ui-translations.js','src/misc-translations.js','src/scrolling-tip-translations.js','src/patterns.js','src/translator-core.js','src/content-script.js','popup.js']) new Function(require('node:fs').readFileSync(f,'utf8')); console.log('syntax ok')"
+node -e "const fs=require('node:fs'); const manifest=JSON.parse(fs.readFileSync('manifest.json','utf8')); for (const f of [...manifest.content_scripts[0].js, 'popup.js']) new Function(fs.readFileSync(f,'utf8')); console.log('syntax ok')"
 ```

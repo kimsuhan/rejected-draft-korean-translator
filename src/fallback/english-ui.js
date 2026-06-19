@@ -1,12 +1,11 @@
-(function initRejectedDraftTranslations(globalScope) {
-  const target = globalScope.REJECTED_DRAFT_KO_TRANSLATIONS || {};
-  Object.assign(target, {
+(function initRejectedDraftEnglishUiFallback(globalScope) {
+  const registry = globalScope.RejectedDraftKoRegistry;
+  registry.registerTranslations( {
     "A-Z": "가나다순",
     "All": "전체",
     "Angry accident.": "화난 사고뭉치.",
     "Anxiety with legs.": "다리 달린 불안감.",
     "Art is pain. Inflict it and reclaim your glory.": "예술은 고통이다. 고통을 주고 영광을 되찾아라.",
-    "ATK": "공격",
     "Battle": "전투",
     "Battle Stats": "전투 능력치",
     "Blinding. Honest. Every stroke exposed.": "눈부시고 정직하다. 모든 선이 드러난다.",
@@ -33,8 +32,6 @@
     "Fundamentals": "기본 능력",
     "Gallery": "갤러리",
     "Glossary Multiplier": "용어집 배율",
-    "GRA": "흑연",
-    "HP": "체력",
     "Language (Non-English translations are incomplete. Help us translate! Join Discord for info)": "언어 (영어 외 번역은 아직 불완전합니다. 번역을 돕고 싶다면 Discord에 참여하세요)",
     "MND": "정신",
     "Minimize": "최소화",
@@ -49,19 +46,16 @@
     "Pristine": "프리스틴",
     "Protocols": "프로토콜",
     "Rarity": "희귀도",
-    "Redraw": "다시 그리기",
     "Rejected Draft": "Rejected Draft",
     "Reposition": "위치 조정",
     "Rewards": "보상",
     "Select Language": "언어 선택",
     "Select": "선택",
     "Select your preferred theme": "선호하는 테마를 선택하세요",
-    "Settings": "설정",
     "Skip": "건너뛰기",
     "Skip Tutorial": "튜토리얼 건너뛰기",
     "Smudge": "얼룩",
     "Sort": "정렬",
-    "SPD": "속도",
     "Stats": "능력치",
     "Stick Man": "졸라맨",
     "Shop": "상점",
@@ -76,8 +70,6 @@
     "Unlock tools in the shop to see them here.": "상점에서 도구를 해금하면 여기에 표시됩니다.",
     "Utility": "보조",
     "Value": "값",
-    "V-Wing Bat": "V-윙 박쥐",
-    "Victory": "승리",
     "A lazy \"M\" shape.": "게으른 M자 모양.",
     "View Journey": "여정 보기",
     "Void": "공허",
@@ -87,6 +79,5 @@
     "Your Journey Begins": "여정의 시작",
     "Your Progression": "성장 진행도",
     "You": "나"
-  });
-  globalScope.REJECTED_DRAFT_KO_TRANSLATIONS = target;
+}, "english-ui");
 })(typeof globalThis !== "undefined" ? globalThis : window);

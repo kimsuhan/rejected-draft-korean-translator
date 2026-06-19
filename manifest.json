@@ -1,9 +1,16 @@
 {
   "manifest_version": 3,
-  "name": "Rejected Draft Korean Translator",
+  "name": "Rejected Draft Korean Polish Patch",
   "version": "0.1.0",
-  "description": "Korean DOM text translator for Rejected Draft on Galaxy.",
-  "permissions": ["storage"],
+  "description": "Korean UI polish patch for Rejected Draft official Korean text.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "storage"
+  ],
   "host_permissions": [
     "https://galaxy.click/play/733*",
     "https://kuzzigames.com/rejected_draft/*"
@@ -15,29 +22,48 @@
         "https://kuzzigames.com/rejected_draft/*"
       ],
       "js": [
-        "src/glossary-translations.js",
-        "src/translations.js",
-        "src/locale-core-translations.js",
-        "src/sketch-name-translations.js",
-        "src/sketch-flavor-translations.js",
-        "src/skill-translations.js",
-        "src/medal-translations.js",
-        "src/stat-translations.js",
-        "src/ui-message-translations.js",
-        "src/tutorial-story-translations.js",
-        "src/gameplay-ui-translations.js",
-        "src/misc-translations.js",
-        "src/scrolling-tip-translations.js",
-        "src/patterns.js",
-        "src/translator-core.js",
-        "src/content-script.js"
+        "src/registry.js",
+        "src/glossary/currency.js",
+        "src/glossary/combat-stats.js",
+        "src/glossary/status-effects.js",
+        "src/glossary/rarities.js",
+        "src/glossary/common.js",
+        "src/polish/official-ko-fixes.js",
+        "src/fallback/english-ui.js",
+        "src/fallback/locale-core.js",
+        "src/sketches/names.js",
+        "src/sketches/flavor.js",
+        "src/skills/archive-tree.js",
+        "src/skills/combat.js",
+        "src/medals/locale.js",
+        "src/medals/achievements.js",
+        "src/stats/tooltips.js",
+        "src/ui/messages.js",
+        "src/ui/tutorial-story.js",
+        "src/ui/gameplay.js",
+        "src/fallback/misc.js",
+        "src/ui/scrolling-tips.js",
+        "src/patterns/numbers-time.js",
+        "src/patterns/notifications.js",
+        "src/patterns/scrolling-tips.js",
+        "src/patterns/tooltips.js",
+        "src/patterns/rewards-requirements.js",
+        "src/patterns/medals.js",
+        "src/patterns/gameplay.js",
+        "src/core/translator-core.js",
+        "src/core/content-script.js"
       ],
       "run_at": "document_idle",
       "all_frames": true
     }
   ],
   "action": {
-    "default_title": "Rejected Draft KO",
-    "default_popup": "popup.html"
+    "default_title": "Rejected Draft KO Polish",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
   }
 }

@@ -1,8 +1,7 @@
-(function initRejectedDraftMiscTranslations(globalScope) {
-  const target = globalScope.REJECTED_DRAFT_KO_TRANSLATIONS || {};
-  Object.assign(target, {
+(function initRejectedDraftMiscFallbackTranslations(globalScope) {
+  const registry = globalScope.RejectedDraftKoRegistry;
+  registry.registerTranslations( {
     "Lorem ipsum dolor sit amet...": "로렘 입숨 돌로르 싯 아멧...",
-    " Values over 100% allow for multiple applications per hit.": "100%를 넘는 값은 한 타격에 여러 번 적용될 수 있습니다.",
     "Let the machine decide. Your artistic input is no longer required for these increments.": "기계가 결정하게 하세요. 이 증가분에는 더 이상 당신의 예술적 입력이 필요하지 않습니다.",
     "Unlocks a permanent Charcoal Concept production multiplier. After purchase, every victory against a Framed sketch adds +0.00003x to Charcoal Concept production. Victory count persists through Redraws and keeps increasing without a cap.": "영구 목탄 착상 생산 배율을 해금합니다. 구매 후 프레임 스케치를 상대로 승리할 때마다 목탄 착상 생산에 +0.00003배가 추가됩니다. 승리 수는 다시 그리기 이후에도 유지되며 상한 없이 계속 증가합니다.",
     "Unlocks a permanent Coffee Concept production multiplier. After purchase, every victory against an Opus sketch adds +0.00005x to Coffee Concept production. Victory count persists through Redraws and keeps increasing without a cap.": "영구 커피 착상 생산 배율을 해금합니다. 구매 후 오푸스 스케치를 상대로 승리할 때마다 커피 착상 생산에 +0.00005배가 추가됩니다. 승리 수는 다시 그리기 이후에도 유지되며 상한 없이 계속 증가합니다.",
@@ -11,7 +10,6 @@
     "Unlocks a permanent Wax Concept production multiplier. After purchase, every victory against a Rough sketch adds +0.00001x to Wax Concept production. Victory count persists through Redraws and keeps increasing without a cap.": "영구 왁스 착상 생산 배율을 해금합니다. 구매 후 초안 스케치를 상대로 승리할 때마다 왁스 착상 생산에 +0.00001배가 추가됩니다. 승리 수는 다시 그리기 이후에도 유지되며 상한 없이 계속 증가합니다.",
     "Unlocks Battle Speedup accumulation. Once unlocked, catch-up time charges both online and offline at 1 minute every 2 hours, up to 10 minutes stored. Stored time can be activated from the player sidebar (only shows up when at least 1 minute is accumulated) for 2× battle speed. It also halves flee and death cooldowns.": "전투 가속 누적을 해금합니다. 해금 후 따라잡기 시간은 온라인과 오프라인 모두에서 2시간마다 1분씩 충전되며 최대 10분까지 저장됩니다. 저장된 시간은 플레이어 사이드바에서 활성화할 수 있고(최소 1분이 쌓였을 때만 표시), 전투 속도가 2배가 됩니다. 도망 패널티와 부활 대기시간도 절반으로 줄어듭니다.",
     "When advancing to next battle through Auto-Challenge, reduces your attack delay for the very first attack of the next battle. Does not apply to sketches that have never been defeated before.": "자동 도전으로 다음 전투에 진입할 때 다음 전투의 첫 공격 지연을 줄입니다. 한 번도 격파한 적 없는 스케치에는 적용되지 않습니다.",
-    "#{slot}": "#{slot}",
     "The sketch returns larger, sharper, and less stable. Foreign traits now protrude from its frame instead of blending cleanly within it. It no longer copies with precision; it forces incompatible forms together through sheer will, widening itself into something unnatural.": "그 스케치는 더 크고 날카롭고 불안정한 모습으로 돌아옵니다. 이질적인 특징들은 이제 프레임 안에 자연스럽게 섞이지 않고 밖으로 튀어나옵니다. 더 이상 정밀하게 복제하지 않습니다. 순수한 의지로 양립할 수 없는 형태를 억지로 이어 붙이며, 자신을 부자연스러운 무언가로 넓혀 갑니다.",
     "This is no longer a sketch, it is an overcrowded monument to obsession. Its body has expanded beyond the limits of the page itself, erupting outward in every direction as stolen powers spill uncontrollably into reality. Wings, blades, eyes, and impossible structures bloom from its frame like a desperate attempt to imitate divinity. It believes that if it becomes large enough, detailed enough, complex enough... the Artist will finally acknowledge it.": "이것은 더 이상 스케치가 아니라 집착으로 가득 찬 과밀한 기념비입니다. 몸은 페이지 자체의 한계를 넘어 모든 방향으로 터져 나가고, 훔친 힘은 현실 속으로 통제 없이 쏟아집니다. 날개, 칼날, 눈, 불가능한 구조물이 신성을 흉내 내려는 필사적인 시도처럼 프레임에서 피어납니다. 그것은 충분히 크고, 충분히 세밀하고, 충분히 복잡해진다면... 예술가가 마침내 자신을 인정할 것이라 믿습니다.",
     "Encounter this sketch version to reveal.": "이 스케치 버전을 조우하면 공개됩니다.",
@@ -23,7 +21,6 @@
     "The Redraw (Prestige)": "다시 그리기 (환생)",
     "Rough Rarity Encounter": "초안 등급 조우",
     "The Soft Truth": "부드러운 진실",
-    "Steam": "Steam",
     "the enemy": "적",
     "You Died": "사망",
     "Dark Mode Only - Can be toggled in Settings": "다크 모드 전용 - 설정에서 전환 가능",
@@ -101,7 +98,6 @@
     "QE (Pending)": "QE (대기 중)",
     "QE (Total)": "QE (총량)",
     "Precise Eraser Applied!": "정밀 지우개 적용!",
-
     "This game exists because people showed up with ideas, art, support, testing, encouragement, and patience. I am genuinely grateful for all of it.": "이 게임은 아이디어, 아트, 지원, 테스트, 격려, 인내를 가지고 함께해 준 사람들이 있었기에 존재합니다. 그 모든 것에 진심으로 감사드립니다.",
     "These artists donated their work to replace placeholders and allow this game to thrive. Artists are number of contributions that are in the game. Every piece of art is also individually credited in the Glossary art view.": "이 아티스트들은 임시 이미지를 대체하고 게임이 성장할 수 있도록 자신의 작품을 기여했습니다. 아티스트 수는 게임에 포함된 기여 수를 의미합니다. 모든 아트는 용어집의 아트 보기에서도 개별적으로 크레딧이 표시됩니다.",
     "Everything else would not have been possible without an amazing community that banded behind this project.": "그 밖의 모든 일은 이 프로젝트를 함께 밀어준 훌륭한 커뮤니티가 있었기에 가능했습니다.",
@@ -122,13 +118,12 @@
     "Community": "커뮤니티",
     "Translators": "번역자",
     "Community Members": "커뮤니티 멤버",
-    "Discord": "Discord",
+    "Discord": "디스코드",
     "Financial Support": "재정 지원",
     "Project": "프로젝트",
     "Recognition": "인정",
     "I deeply appreciate everyone who helped make the game easier to share across communities. Within each language, names are sorted by contribution level.": "게임이 여러 커뮤니티에 더 쉽게 퍼질 수 있도록 도와준 모든 분께 깊이 감사드립니다. 각 언어 안에서는 기여 수준에 따라 이름이 정렬됩니다.",
     "Credits are still a work in progress. Apologies if your valuable contributions are not fully accredited yet.": "크레딧은 아직 작업 중입니다. 소중한 기여가 아직 충분히 반영되지 않았다면 양해 부탁드립니다.",
-
     "Danish": "덴마크어",
     "Spanish": "스페인어",
     "Polish": "폴란드어",
@@ -143,7 +138,6 @@
     "Turkish": "튀르키예어",
     "Vietnamese": "베트남어",
     "Korean": "한국어",
-
     "Current Softcap": "현재 소프트캡",
     "Doubling Time": "두 배 시간",
     "Efficiency": "소프트캡 보정",
@@ -151,16 +145,13 @@
     "QE Gain": "QE 획득",
     "Gain Multiplier": "획득 배율",
     "Gain Rate": "획득 속도",
-    "Quintessence": "정수",
     "Lifetime": "평생",
     "Next Softcap": "다음 소프트캡",
     "Pending": "대기 중",
     "Production": "생산",
     "Time Until": "남은 시간",
-
     "Battle Speedup Charged": "전투 가속 충전됨",
     "Collect Resources": "자원 수령",
-    "Conceptual Synthesis": "착상 합성",
     "Currency Generation": "재화 생성",
     "No concept gains": "착상 획득 없음",
     "No currency gains": "재화 획득 없음",
@@ -170,7 +161,6 @@
     "Warning: Browser throttling detected": "경고: 브라우저 제한 감지",
     "Offline Time": "오프라인 시간",
     "Welcome Back": "다시 오신 것을 환영합니다",
-
     "The golden ratio": "황금비",
     "Number of colors in an RGB display": "RGB 디스플레이의 색상 수",
     "Number of base pairs in the human genome": "인간 게놈의 염기쌍 수",
@@ -182,7 +172,6 @@
     "2048-Bit Gate": "2048비트 관문",
     "Root Authority / System Layer": "루트 권한 / 시스템 계층",
     "Return to the golden ratio": "황금비로의 귀환",
-
     "Guaranteed Sketches": "확정 스케치",
     "Redraw Confirmation": "다시 그리기 확인",
     "Increased Odds": "증가한 확률",
@@ -193,7 +182,6 @@
     "Hide Details": "세부 정보 숨기기",
     "Show What Gets Reset": "초기화되는 항목 보기",
     "Yield": "수익",
-
     "Guaranteed Paragon": "확정 파라곤",
     "Guaranteed Sketch": "확정 스케치",
     "Toggle to guarantee this Paragon in Redraws. Takes up {weight} slots.": "다시 그리기에서 이 파라곤을 확정하려면 전환하세요. 슬롯 {weight}개를 차지합니다.",
@@ -202,7 +190,6 @@
     "Slots: {used}/{capacity} Used": "슬롯: {used}/{capacity} 사용",
     "REQUIRES: {name} to be guaranteed first.": "필요: 먼저 {name} 확정 필요.",
     "ERROR: Not enough slots (requires {weight}).": "오류: 슬롯 부족 ({weight} 필요).",
-
     "If you feel like supporting development, a coffee is always appreciated. It means more than you might think.": "개발을 지원하고 싶다면 커피 한 잔은 언제나 감사히 받겠습니다. 생각보다 더 큰 의미가 있습니다.",
     "You’re welcome to keep pushing further, though Quintessence will soon cap at 1e250. Consider it the edge of what this version can hold.": "계속 더 밀어붙여도 좋지만 정수는 곧 1e250에서 상한에 도달합니다. 이 버전이 담을 수 있는 끝이라고 생각해 주세요.",
     "There’s more ahead: your ultimate revenge, plus NG+ modes for the biggest fiends. Wishlisting on Steam is the best way to secure these fun experiences in future.": "앞으로 더 많은 것이 있습니다. 궁극적인 복수와 가장 집요한 플레이어를 위한 NG+ 모드까지. Steam 찜 목록 추가는 이런 재미있는 경험을 미래에 확보하는 가장 좋은 방법입니다.",
@@ -211,21 +198,18 @@
     "Web saves are not transferable because the pacing is different. As a reward for finishing this version, here is a Steam skill-tree trick for a jump start: use this pattern of mouse clicks on Temporal Flow, Battle Speedup, Divine Retribution, and Prepared Studio to unlock them (even before they are visible).": "Web 저장 데이터는 진행 속도가 달라 이전되지 않습니다. 이 버전을 끝낸 보상으로, 빠른 시작을 위한 Steam 스킬 트리 비법을 드립니다. 시간 흐름, 전투 가속, 신성한 응징, 준비된 작업실에 이 마우스 클릭 패턴을 사용하면 보이지 않기 전에도 해금할 수 있습니다.",
     "Steam Jump Start": "Steam 빠른 시작",
     "Seriously, thank you for seeing this journey through. If you made it here, you gave this game your time, and that means more than I can say.": "진심으로, 이 여정을 끝까지 함께해 주셔서 감사합니다. 여기까지 왔다면 이 게임에 시간을 내어 준 겁니다. 말로 다 하기 어려울 만큼 큰 의미가 있습니다.",
-
     "Enables a permanent Charcoal Concept production multiplier that starts at x1 and adds +0.00003x for every Framed sketch victory earned after unlock. The victory count is kept through Redraws and has no cap.": "1배에서 시작하고 해금 후 프레임 스케치 승리마다 +0.00003배가 추가되는 영구 목탄 착상 생산 배율을 활성화합니다. 승리 수는 다시 그리기 이후에도 유지되며 상한이 없습니다.",
     "Enables a permanent Coffee Concept production multiplier that starts at x1 and adds +0.00005x for every Opus sketch victory earned after unlock. The victory count is kept through Redraws and has no cap.": "1배에서 시작하고 해금 후 오푸스 스케치 승리마다 +0.00005배가 추가되는 영구 커피 착상 생산 배율을 활성화합니다. 승리 수는 다시 그리기 이후에도 유지되며 상한이 없습니다.",
     "Controls how fast rewards decay per victory. Reward after n kills = base / (1 + n × decay). Lower values mean slower decay and more total rewards.": "승리당 보상이 얼마나 빠르게 감소하는지 제어합니다. n회 처치 후 보상 = 기본값 / (1 + n × 감소). 값이 낮을수록 감소가 느리고 총 보상이 많아집니다.",
     "Global speed multiplier affecting everything including battle speed, currency generation, and conceptual synthesis. Also works with offline gains.": "전투 속도, 재화 생성, 착상 합성을 포함한 모든 것에 영향을 주는 전역 속도 배율입니다. 오프라인 획득에도 적용됩니다.",
     "Multiplies rewards for commissioned currencies. Starts with Gold Leaf and can later include Photon. Each Redraw adds the total number of victories earned against Masterpiece rarity sketches during that run, with no cap. Applied multiplicatively with Feat Mult before reward exponents.": "의뢰 재화 보상을 곱합니다. 금박으로 시작하며 나중에는 광자도 포함될 수 있습니다. 각 다시 그리기마다 해당 실행 중 걸작 희귀도 스케치를 상대로 얻은 총 승리 수가 상한 없이 추가됩니다. 보상 지수 전에 업적 배율과 곱연산으로 적용됩니다.",
     "Enables a permanent Wax Concept production multiplier that starts at x1 and adds +0.00001x for every Rough sketch victory earned after unlock. The victory count is kept through Redraws and has no cap.": "1배에서 시작하고 해금 후 초안 스케치 승리마다 +0.00001배가 추가되는 영구 왁스 착상 생산 배율을 활성화합니다. 승리 수는 다시 그리기 이후에도 유지되며 상한이 없습니다.",
-
     "Count": "수량",
     "Producing": "생산 중",
     "Total": "합계",
     "Milestones: 1 start production | 2,3,4 = {m2}x | 5,6,7 = {m5}x | 8,9,10 = {m8}x | 11 = {m11}x": "마일스톤: 1 생산 시작 | 2,3,4 = {m2}배 | 5,6,7 = {m5}배 | 8,9,10 = {m8}배 | 11 = {m11}배",
     "Milestones": "마일스톤",
     "Next At": "다음 기준",
-
     "1st Kill:": "첫 처치:",
     "Artist credits and alternate versions": "아티스트 크레딧과 대체 버전",
     "Excluded": "제외됨",
@@ -243,7 +227,7 @@
     "Prestige tokens earned through achievements. Spend them to unlock permanent bonuses.": "업적으로 얻는 환생 토큰입니다. 영구 보너스를 해금하는 데 사용합니다.",
     "Unlocked": "해금됨",
     "Clear": "지우기",
-    "v1.0.0": "v1.0.0",
+    "v1.0.0": "버전 1.0.0",
     "Generator Multiplier:": "생성기 배율:",
     "Highest DMG": "최고 피해",
     "Yes": "예",
@@ -269,7 +253,6 @@
     "Original HP": "원래 체력",
     "Pending Quintessence": "대기 중인 정수",
     "/s": "/초",
-    "Paste save string here...": "저장 문자열을 여기에 붙여넣으세요...",
     "Portfolio Review protocol will target sketches in priority order (1 > 2 > 3{extra}). Click to cycle ranking. Left click to decrease; Right click to increase.": "스케치 순회 프로토콜은 우선순위 순서(1 > 2 > 3{extra})로 스케치를 대상으로 삼습니다. 클릭해 순위를 순환합니다. 왼쪽 클릭은 감소, 오른쪽 클릭은 증가입니다.",
     "Portfolio Priority: {priority}": "순회 우선순위: {priority}",
     "Prioritization is locked until this sketch has been defeated and added to Glossary.": "이 스케치를 격파해 용어집에 추가하기 전까지 우선순위 지정은 잠겨 있습니다.",
@@ -343,11 +326,6 @@
     "A JOURNEY UNIQUELY YOURS": "오직 당신만의 여정",
     "Progression in Rejected Draft is fully randomized. Between your guaranteed core sketches and randomly rolled higher rarity ones, the potential loadout combinations are practically infinite. No optimal path exists until you forge yours. If everyone on Earth played a billion distinct playthroughs a second since the dawn of the universe, humanity still wouldn't scratch the surface of all possible paths. Every prestige shapes an entirely new journey.": "Rejected Draft의 진행은 완전히 무작위입니다. 확정 핵심 스케치와 무작위로 등장하는 상위 희귀도 스케치 사이에서 가능한 로드아웃 조합은 사실상 무한합니다. 직접 만들기 전까지 최적의 길은 없습니다. 지구상의 모든 사람이 우주의 시작부터 초당 10억 개의 서로 다른 플레이를 했더라도, 인류는 가능한 모든 경로의 표면조차 긁지 못했을 겁니다. 매 환생은 완전히 새로운 여정을 만듭니다.",
     "DEEP STRATEGY, LOW ATTENTION": "깊은 전략, 낮은 주의 부담",
-    "This is an incremental experience that demands your strategic reasoning but respects your time. While there are many active elements to engage with, you will unlock expanding layers of automation as you progress. Designed to be the ultimate second-screen companion, it is a highly satisfying procrastination tool that runs perfectly in the background, allowing you to plot your next massive power spike while still getting your real-life work done.": "이 게임은 전략적 판단을 요구하지만 시간을 빼앗아 가지 않는 방치형 경험입니다. 직접 다룰 요소도 많지만, 진행할수록 자동화 계층이 넓어집니다. 세컨드 스크린에 띄워 두기 좋게 설계된 만족스러운 미루기 도구이며, 현실의 일을 처리하면서도 다음 거대한 전력 상승을 계획할 수 있게 해 줍니다.",
-    "#{slot}": "슬롯 #{slot}",
-    "Steam": "스팀",
-    "v1.0.0": "버전 1.0.0",
-    "Discord": "디스코드"
-  });
-  globalScope.REJECTED_DRAFT_KO_TRANSLATIONS = target;
+    "This is an incremental experience that demands your strategic reasoning but respects your time. While there are many active elements to engage with, you will unlock expanding layers of automation as you progress. Designed to be the ultimate second-screen companion, it is a highly satisfying procrastination tool that runs perfectly in the background, allowing you to plot your next massive power spike while still getting your real-life work done.": "이 게임은 전략적 판단을 요구하지만 시간을 빼앗아 가지 않는 방치형 경험입니다. 직접 다룰 요소도 많지만, 진행할수록 자동화 계층이 넓어집니다. 세컨드 스크린에 띄워 두기 좋게 설계된 만족스러운 미루기 도구이며, 현실의 일을 처리하면서도 다음 거대한 전력 상승을 계획할 수 있게 해 줍니다."
+}, "misc-fallback");
 })(typeof globalThis !== "undefined" ? globalThis : window);

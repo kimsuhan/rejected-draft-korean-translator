@@ -2,6 +2,7 @@
   const STORAGE_KEY = "rejectedDraftKoEnabled";
   const MISSING_KEY = "rejectedDraftKoMissing";
   const DEFAULT_ENABLED = true;
+  const ENABLE_MISSING_TEXT_CAPTURE = true;
   const READABILITY_STYLE_ID = "rejected-draft-ko-readability-style";
   const dictionary = globalScope.REJECTED_DRAFT_KO_TRANSLATIONS || {};
   const patterns = globalScope.REJECTED_DRAFT_KO_PATTERNS || [];
@@ -38,6 +39,7 @@
   }
 
   function rememberMissing(text) {
+    if (!ENABLE_MISSING_TEXT_CAPTURE) return;
     pendingMissing.add(text);
     if (missingFlushTimer) return;
     missingFlushTimer = globalScope.setTimeout(flushMissingTexts, MISSING_FLUSH_DELAY_MS);
@@ -171,7 +173,10 @@
       if (!enabled) return;
       const readability = createReadabilityScheduler();
       readability.add(globalScope.document.body);
-      const translator = core.createTranslator(dictionary, { onMissingText: rememberMissing, patterns });
+      const translator = core.createTranslator(dictionary, {
+        onMissingText: ENABLE_MISSING_TEXT_CAPTURE ? rememberMissing : null,
+        patterns,
+      });
       const disconnect = translator.observe(globalScope.document.body, globalScope.MutationObserver);
       const readabilityObserver = new globalScope.MutationObserver((mutations) => {
         for (const mutation of mutations) {

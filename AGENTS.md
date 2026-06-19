@@ -12,38 +12,43 @@
 
 ## 용어 중복 방지
 
-- 재화, 능력치, 상태 효과, 약어처럼 여러 화면에 반복되는 핵심 용어는 반드시 `src/glossary-translations.js`에 먼저 둔다.
-- 다른 사전 파일이나 `src/patterns.js` 안에 같은 용어표를 새로 만들지 않는다. 이미 glossary에 있는 용어는 재정의하지 말고 재사용한다.
+- 재화, 능력치, 상태 효과, 약어처럼 여러 화면에 반복되는 핵심 용어는 반드시 `src/glossary/*.js`에 먼저 둔다.
+- 다른 사전 파일이나 `src/patterns/*.js` 안에 같은 용어표를 새로 만들지 않는다. 이미 glossary에 있는 용어는 재정의하지 말고 재사용한다.
 - `Graphite`와 `GRA`처럼 같은 개념의 이름/약어는 glossary에서 같은 번역으로 묶는다. `Inspiration`처럼 별도 개념인 단어와 섞이지 않게 한다.
-- `src/patterns.js`에서는 `t(value)`를 사용해 glossary와 기존 사전을 타게 한다.
+- `src/patterns/*.js`에서는 `t(value)`를 사용해 glossary와 기존 사전을 타게 한다.
 - 기존 용어는 통일한다. 예: `Redraw`는 `다시 그리기`, `Quintessence`는 `정수`, `Feat Medal`은 `업적 메달`, `Glossary`는 `용어집`.
 
 ## 파일 선택 규칙
 
-- `src/glossary-translations.js`: 재화, 능력치, 상태 효과, 약어 등 공통 핵심 용어.
-- `src/translations.js`: 일반 고정 문구.
-- `src/locale-core-translations.js`: locale 기반 공통 UI, 능력치, 상점, 설정, 스킬트리 문구.
-- `src/sketch-name-translations.js`: 스케치 이름.
-- `src/sketch-flavor-translations.js`: 스케치 설명/플레이버 텍스트.
-- `src/skill-translations.js`: 스킬 이름, 설명, 플레이버 텍스트.
-- `src/medal-translations.js`: 업적 메달, 과제, 카테고리 문구.
-- `src/stat-translations.js`: 전투 능력치 툴팁과 상태 설명.
-- `src/ui-message-translations.js`: 설정, 알림, 공통 UI 메시지.
-- `src/tutorial-story-translations.js`: 튜토리얼, 스토리, 안내 모달.
-- `src/gameplay-ui-translations.js`: 도구, 용어집, 갤러리, 전투, 아카이브 등 플레이 UI.
-- `src/misc-translations.js`: 크레딧, 언어명, 오프라인 요약, Steam 안내 등 기타 문구.
-- `src/patterns.js`: 숫자, 이름, 재화, 단계, 보상처럼 값이 바뀌는 동적 문구.
-- `src/translator-core.js`, `src/content-script.js`: 번역 로직과 DOM 감시. 번역 추가만으로 해결되는 작업에서는 건드리지 않는다.
+- `src/registry.js`: 사전, glossary, 패턴 등록 헬퍼. 번역 추가만으로 해결되는 작업에서는 건드리지 않는다.
+- `src/glossary/currency.js`: 재화와 재화 약어.
+- `src/glossary/combat-stats.js`: 전투 능력치와 능력치 약어.
+- `src/glossary/status-effects.js`: 상태 효과, 버프, 디버프.
+- `src/glossary/rarities.js`, `src/glossary/common.js`: 희귀도와 기타 공통 핵심 용어.
+- `src/polish/official-ko-fixes.js`: 공식 한국어 UI의 어색한 문구를 게임 UI 톤으로 보정.
+- `src/fallback/english-ui.js`, `src/fallback/locale-core.js`, `src/fallback/misc.js`: 아직 영어로 남는 고정 문구 fallback.
+- `src/sketches/names.js`: 스케치/적 이름만.
+- `src/sketches/flavor.js`: 스케치 설명/플레이버 텍스트.
+- `src/skills/archive-tree.js`, `src/skills/combat.js`: 스킬 이름, 설명, 플레이버 텍스트.
+- `src/medals/locale.js`, `src/medals/achievements.js`: 업적 메달, 과제, 카테고리 문구.
+- `src/stats/tooltips.js`: 전투 능력치 툴팁과 상태 설명.
+- `src/ui/messages.js`: 설정, 알림, 공통 UI 메시지.
+- `src/ui/tutorial-story.js`: 튜토리얼, 스토리, 안내 모달.
+- `src/ui/gameplay.js`: 도구, 용어집, 갤러리, 전투, 아카이브 등 플레이 UI.
+- `src/ui/scrolling-tips.js`: 스크롤 팁, 비평, 농담, 사실, 생활 팁 문구.
+- `src/patterns/*.js`: 숫자, 시간, 이름, 재화, 단계, 보상처럼 값이 바뀌는 동적 문구.
+- `src/core/translator-core.js`, `src/core/content-script.js`: 번역 로직과 DOM 감시. 번역 추가만으로 해결되는 작업에서는 건드리지 않는다.
 
 ## 번역 작업 절차
 
 1. 스크린샷이나 미번역 로그에서 실제 화면에 보이는 영어 원문을 정확히 확인한다.
-2. 반복 용어라면 `src/glossary-translations.js`에 먼저 추가하거나 기존 항목을 수정한다.
-3. 고정 문구는 가장 알맞은 `*-translations.js` 파일에 추가한다.
-4. 값이 바뀌는 문구는 `src/patterns.js`에 정규식 패턴으로 추가한다.
-5. 제목과 본문이 한 DOM 텍스트 노드로 합쳐지는 툴팁은 정규화된 한 줄 기준으로 결합 패턴을 잡는다.
-6. 같은 문구가 일부만 먼저 번역되어 다시 결합될 수 있으면, 영어 원문 형태와 부분 번역 형태를 모두 처리한다.
-7. 테스트는 추가하지 않는다. 변경 후 문법/매니페스트 검사와 Chrome 예약 파일 검사만 수행한다.
+2. 반복 용어라면 알맞은 `src/glossary/*.js`에 먼저 추가하거나 기존 항목을 수정한다.
+3. 공식 한국어 문구가 어색한 경우 `src/polish/official-ko-fixes.js`에 추가한다.
+4. 영어 고정 문구는 가장 알맞은 도메인 파일에 추가한다. 예: 스케치 이름은 `src/sketches/names.js`, 스킬은 `src/skills/*.js`, 일반 fallback은 `src/fallback/*.js`.
+5. 값이 바뀌는 문구는 알맞은 `src/patterns/*.js`에 정규식 패턴으로 추가한다.
+6. 제목과 본문이 한 DOM 텍스트 노드로 합쳐지는 툴팁은 정규화된 한 줄 기준으로 결합 패턴을 잡는다.
+7. 같은 문구가 일부만 먼저 번역되어 다시 결합될 수 있으면, 영어 원문 형태와 부분 번역 형태를 모두 처리한다.
+8. 테스트는 추가하지 않는다. 변경 후 문법/매니페스트 검사와 Chrome 예약 파일 검사만 수행한다.
 
 ## 동적 패턴 규칙
 
@@ -65,7 +70,7 @@
 변경 후 최소한 아래 두 가지를 확인한다.
 
 ```bash
-node -e "JSON.parse(require('node:fs').readFileSync('manifest.json','utf8')); for (const f of ['src/glossary-translations.js','src/translations.js','src/locale-core-translations.js','src/sketch-name-translations.js','src/sketch-flavor-translations.js','src/skill-translations.js','src/medal-translations.js','src/stat-translations.js','src/ui-message-translations.js','src/tutorial-story-translations.js','src/gameplay-ui-translations.js','src/misc-translations.js','src/patterns.js','src/translator-core.js','src/content-script.js','popup.js']) new Function(require('node:fs').readFileSync(f,'utf8')); console.log('syntax ok')"
+node -e "const fs=require('node:fs'); const manifest=JSON.parse(fs.readFileSync('manifest.json','utf8')); for (const f of [...manifest.content_scripts[0].js, 'popup.js']) new Function(fs.readFileSync(f,'utf8')); console.log('syntax ok')"
 ```
 
 ```bash
@@ -80,4 +85,4 @@ find . -maxdepth 2 -name '_*' -print
 - 값이 바뀌는 문구를 고정 문자열로만 처리하지 않는다.
 - glossary에 들어갈 반복 용어를 개별 사전이나 패턴 안에 중복 정의하지 않는다.
 - 관련 없는 리팩터링을 섞지 않는다.
-- 번역 추가 작업에서 `src/translator-core.js`, `src/content-script.js`, 게임 DOM, 스타일을 과하게 바꾸지 않는다.
+- 번역 추가 작업에서 `src/registry.js`, `src/core/translator-core.js`, `src/core/content-script.js`, 게임 DOM, 스타일을 과하게 바꾸지 않는다.

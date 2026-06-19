@@ -1,0 +1,37 @@
+(function initRejectedDraftStatusEffectGlossary(globalScope) {
+  const registry = globalScope.RejectedDraftKoRegistry;
+  registry.registerGlossary( {
+    "Absorb": "흡수",
+    "Balloon": "풍선",
+    "Banana Peel": "바나나 껍질",
+    "Black Flame": "검은 불꽃",
+    "Bleed": "출혈",
+    "Bleed Chance": "출혈 확률",
+    "Brittle": "균열",
+    "Burn": "화상",
+    "Burn Chance": "화상 확률",
+    "Burn Damage": "화상 피해",
+    "Counter": "반격",
+    "Curse": "저주",
+    "Electrocute": "감전",
+    "Energy Wave": "에너지 파동",
+    "Frailty": "취약",
+    "Freeze": "빙결",
+    "Haste": "가속",
+    "Hinder": "교란",
+    "Hot Potato": "뜨거운 감자",
+    "Hypnotize": "최면",
+    "Irradiated": "방사",
+    "Irradiate": "방사",
+    "Leap": "도약",
+    "Parry": "쳐내기",
+    "Plague": "역병",
+    "Poison": "독",
+    "Remedy": "치료",
+    "Resonance": "공명",
+    "Slow": "둔화",
+    "Surrealism": "초현실",
+    "Thorns": "가시",
+    "Varnish": "바니시"
+}, "status-effects");
+})(typeof globalThis !== "undefined" ? globalThis : window);

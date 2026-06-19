@@ -1,6 +1,6 @@
 (function initRejectedDraftTutorialStoryTranslations(globalScope) {
-  const target = globalScope.REJECTED_DRAFT_KO_TRANSLATIONS || {};
-  Object.assign(target, {
+  const registry = globalScope.RejectedDraftKoRegistry;
+  registry.registerTranslations( {
     "Archive is where you reflect on your progress and unlock global improvements.": "아카이브는 진행 상황을 되돌아보고 전역 개선을 해금하는 곳입니다.",
     "The Archive": "아카이브",
     "You have built up catch-up time for battles. It charges slowly, both online and offline: 1 minute every 2 hours, up to 10 minutes. Activate 1 minute or all stored time to run battles at 2× speed until that time runs out. While active, flee penalty and death recovery cooldowns are also cut in half.": "전투 따라잡기 시간이 쌓였습니다. 온라인과 오프라인 모두에서 2시간마다 1분씩, 최대 10분까지 천천히 충전됩니다. 1분 또는 저장된 전체 시간을 활성화하면 시간이 다할 때까지 전투가 2배 속도로 진행됩니다. 활성화 중에는 도망 패널티와 부활 대기시간도 절반으로 줄어듭니다.",
@@ -19,7 +19,6 @@
     "The Shop": "상점",
     "Infinitely scaling upgrades for your battle stats. Focus on these to push past tougher enemies. Leveling them may require some clicking but you will soon automate them!": "전투 능력치를 끝없이 키우는 업그레이드입니다. 더 강한 적을 돌파하려면 여기에 집중하세요. 처음엔 클릭이 좀 필요하지만 곧 자동화할 수 있습니다!",
     "View your milestones and concepts here. This is the heart of your prestige progression. Milestones are driven by your total currency gained, so don't be afraid to spend in the Shop!": "여기서 마일스톤과 착상을 확인합니다. 이곳은 환생 진행의 핵심입니다. 마일스톤은 총 재화 획득량으로 결정되므로 상점에서 쓰는 것을 두려워하지 마세요!",
-    "Conceptual Synthesizer": "착상 합성기",
     "Some enemies may feel impossible to defeat. When you get stuck, Redraw and strengthen yourself through the Masterpiece Archive before trying again.": "어떤 적은 도저히 이길 수 없게 느껴질 수 있습니다. 막히면 다시 그리기를 하고 걸작 아카이브에서 자신을 강화한 뒤 다시 도전하세요.",
     "Enemy Too Strong?": "적이 너무 강한가요?",
     "Wow, over 100 redraws! If you're enjoying this game, please wishlist on Steam to show that you like it. The full game will be so much more, including many NG+ modes.": "와, 다시 그리기 100회를 넘겼군요! 이 게임이 마음에 든다면 Steam 찜 목록에 추가해 마음에 든다는 표시를 남겨 주세요. 정식판에는 여러 NG+ 모드를 포함해 훨씬 더 많은 것이 들어갈 예정입니다.",
@@ -46,8 +45,6 @@
     "Wax and subsequent Concepts work differently. Rather than generating Quintessence, they generate count for the Concept immediately above them. This leads to truly high gains! However, all non-Graphite milestones are reset upon Redrawing.": "왁스와 그 이후의 착상은 다르게 작동합니다. 정수를 생성하는 대신 바로 위 착상의 수치를 생성합니다. 이로 인해 정말 높은 획득량이 가능해집니다! 다만 흑연이 아닌 모든 마일스톤은 다시 그리기 시 초기화됩니다.",
     "Tutorial can be reset from Settings": "튜토리얼은 설정에서 초기화할 수 있습니다",
     "Tutorial": "튜토리얼",
-
-    "Defeat": "격파",
     "Intro": "도입",
     "Progress further to reveal this part of your journey.": "더 진행하면 여정의 이 부분이 드러납니다.",
     "Locked": "잠김",
@@ -79,6 +76,5 @@
     "10^80 particles. Roughly the full inventory of the observable universe. Stars, oceans, living beings, entire civilizations - all built from a finite number of pieces. What once felt infinite is only enormous. Every particle, every line, every thought can be counted, measured, and eventually simulated. The Artist still seems impossibly far above you, but his universe now has edges. And for the first time, you can imagine reaching them.": "10^80개의 입자. 관측 가능한 우주 전체의 대략적인 구성 목록입니다. 별, 바다, 생명체, 문명 전체가 모두 유한한 수의 조각으로 만들어졌습니다. 한때 무한해 보였던 것은 그저 거대할 뿐입니다. 모든 입자, 모든 선, 모든 생각은 셀 수 있고 측정할 수 있으며 결국 시뮬레이션할 수 있습니다. 예술가는 여전히 불가능할 만큼 멀리 위에 있는 듯하지만, 이제 그의 우주에는 가장자리가 있습니다. 그리고 처음으로, 당신은 그곳에 닿는 상상을 할 수 있습니다.",
     "Main Journey": "주요 여정",
     "Paragon Side Quest": "파라곤 사이드 퀘스트"
-  });
-  globalScope.REJECTED_DRAFT_KO_TRANSLATIONS = target;
+}, "tutorial-story");
 })(typeof globalThis !== "undefined" ? globalThis : window);

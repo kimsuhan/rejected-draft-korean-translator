@@ -1,6 +1,6 @@
 (function initRejectedDraftUiMessageTranslations(globalScope) {
-  const target = globalScope.REJECTED_DRAFT_KO_TRANSLATIONS || {};
-  Object.assign(target, {
+  const registry = globalScope.RejectedDraftKoRegistry;
+  registry.registerTranslations( {
     "Add Custom Sketch": "커스텀 스케치 추가",
     "ADD CUSTOM SKETCH": "커스텀 스케치 추가",
     "Adds a configurable Custom Challenge sketch to the Gallery.": "갤러리에 설정 가능한 커스텀 도전 스케치를 추가합니다.",
@@ -69,7 +69,6 @@
     "Clamps skills to max affordable. Fix for getting overbuffed due to skill balancing.": "구매 가능한 최대치로 스킬을 제한합니다. 스킬 밸런스 변경으로 과도하게 강화된 상태를 보정합니다.",
     "Clear all manually selected favorite versions for sketches.": "수동으로 선택한 모든 스케치 즐겨찾기 버전을 지웁니다.",
     "Wipe your save and restart. Irreversible.": "저장 데이터를 지우고 다시 시작합니다. 되돌릴 수 없습니다.",
-
     "Browser": "브라우저",
     "BROWSER": "브라우저",
     "Custom sketch exported!": "커스텀 스케치를 내보냈습니다!",
@@ -152,6 +151,5 @@
     "{name} is affordable!": "{name} 구매 가능!",
     "The Artist has been defeated. Something beyond this canvas is now visible.": "예술가가 쓰러졌습니다. 이 캔버스 너머의 무언가가 이제 보입니다.",
     "Multiversal reincarnation complete.": "다중우주 환생이 완료되었습니다."
-  });
-  globalScope.REJECTED_DRAFT_KO_TRANSLATIONS = target;
+}, "ui-messages");
 })(typeof globalThis !== "undefined" ? globalThis : window);

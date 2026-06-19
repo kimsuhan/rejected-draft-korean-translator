@@ -1,6 +1,6 @@
 (function initRejectedDraftGameplayUiTranslations(globalScope) {
-  const target = globalScope.REJECTED_DRAFT_KO_TRANSLATIONS || {};
-  Object.assign(target, {
+  const registry = globalScope.RejectedDraftKoRegistry;
+  registry.registerTranslations( {
     "If auto-challenge reaches Max Victories, automatically move on to the first not maxed, non-hidden sketch.": "자동 도전이 최대 승리에 도달하면, 최대치가 아니고 숨겨지지 않은 첫 스케치로 자동 이동합니다.",
     "Unlock a toggle to automatically purchase upgrades when affordable.": "구매 가능할 때 업그레이드를 자동 구매하는 토글을 해금합니다.",
     "Automatically fight the same enemy for as long as you can survive.": "살아남는 동안 같은 적과 자동으로 전투합니다.",
@@ -34,7 +34,6 @@
     "See art credits and all available versions": "아트 크레딧과 사용 가능한 모든 버전 보기",
     "The Unlabeled Thing": "라벨 없는 것",
     "It does not belong in the shop, which is why it is here.": "이것은 상점에 어울리지 않습니다. 그래서 여기에 있습니다.",
-
     "Solve the sketch name. Word lengths are preserved, but letters may be scrambled across words. Not case sensitive.": "스케치 이름을 맞히세요. 단어 길이는 유지되지만 글자는 단어 사이에서 섞일 수 있습니다. 대소문자는 구분하지 않습니다.",
     "Anagram": "애너그램",
     "Remove all auto-tools for this rarity": "이 희귀도의 모든 자동 도구 제거",
@@ -59,7 +58,6 @@
     "Unscrambled": "해독됨",
     "Redraw Chance: {chance}%": "다시 그리기 확률: {chance}%",
     "Redraw Chance: Guaranteed": "다시 그리기 확률: 확정",
-
     "Something waits beyond the edge of this universe. Not available in demo.": "이 우주의 가장자리 너머에서 무언가가 기다립니다. 데모에서는 사용할 수 없습니다.",
     "Current Universe": "현재 우주",
     "Modifiers": "변경 요소",
@@ -84,7 +82,6 @@
     "Persists": "유지됨",
     "resources, Quintessence, Redraws, enemy progress, shop tools, and non-preserved skill levels": "자원, 정수, 다시 그리기, 적 진행도, 상점 도구, 보존되지 않은 스킬 레벨",
     "feat medals, unlocked art, settings, multiverse progress, and preserved QoL skills": "업적 메달, 해금된 아트, 설정, 다중우주 진행도, 보존된 편의성 스킬",
-
     "Challenge sketch / Battle tab": "스케치 도전 / 전투 탭",
     "Go to Archive tab": "아카이브 탭으로 이동",
     "Toggle Auto-Challenge": "자동 도전 전환",
@@ -108,7 +105,6 @@
     "Go to Tools tab": "도구 탭으로 이동",
     "Go to Stat Upgrades tab": "능력치 업그레이드 탭으로 이동",
     "Toggle Victory Lap": "승리 랩 전환",
-
     "No sketches match your current filters.": "현재 필터와 일치하는 스케치가 없습니다.",
     "All remaining sketches are hidden.": "남은 모든 스케치가 숨겨져 있습니다.",
     "No sketches left. Redraw whenever you are ready.": "남은 스케치가 없습니다. 준비되면 다시 그리세요.",
@@ -123,7 +119,6 @@
     "Show Hidden": "숨김 표시",
     "Drag the non-maxed sketches back into view.": "최대치가 아닌 스케치를 다시 화면으로 끌어옵니다.",
     "Unhide Active": "활성 숨김 해제",
-
     "IN BATTLE": "전투 중",
     "Always (On Every Battle Start)": "항상 (전투 시작마다)",
     "Automatically switches to the Battle tab every time a combat encounter begins.": "전투 조우가 시작될 때마다 자동으로 전투 탭으로 전환합니다.",
@@ -139,7 +134,6 @@
     "1 Min": "1분",
     "2× battle speed": "전투 속도 2배",
     "Stored": "저장됨",
-
     "Exploratory Mode": "탐색 모드",
     "Out of Redraws": "다시 그리기 없음",
     "Synthesize conceptual understanding into Quintessence. The world will be redrawn anew.": "쌓인 착상을 정수로 합성합니다. 세계가 새롭게 다시 그려집니다.",
@@ -153,7 +147,6 @@
     "When active, Targeted Redraw searches behind the scenes during the redraw animation and stops on a run that meets all minimum rarity requirements. Requires >= {chance}% calculated chance.": "활성화 시 타겟 다시 그리기는 다시 그리기 애니메이션 중 뒤에서 검색하고, 모든 최소 희귀도 요구 조건을 만족하는 실행에서 멈춥니다. 계산 확률 {chance}% 이상이 필요합니다.",
     "Challenge to Encounter Defeat to Unlock": "도전해서 조우하고 격파하면 해금",
     "Chance per Redraw": "다시 그리기당 확률",
-
     "Ink is still drying from the last battle. Wait a moment.": "지난 전투의 잉크가 아직 마르는 중입니다. 잠시 기다리세요.",
     "Breathe In": "들이쉬기",
     "Breathe Out": "내쉬기",
@@ -176,6 +169,5 @@
     "{count} random stats": "무작위 능력치 {count}개",
     "a random stat": "무작위 능력치 1개",
     "Land in the {tealZoneStart}teal zone{tealZoneEnd} for {tealZoneStart}+{bonus}% {stat}{tealZoneEnd}": "{tealZoneStart}청록 구역{tealZoneEnd}에 맞춰 {tealZoneStart}{stat} +{bonus}%{tealZoneEnd}"
-  });
-  globalScope.REJECTED_DRAFT_KO_TRANSLATIONS = target;
+}, "gameplay-ui");
 })(typeof globalThis !== "undefined" ? globalThis : window);

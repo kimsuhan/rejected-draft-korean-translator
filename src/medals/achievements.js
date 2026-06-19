@@ -1,21 +1,18 @@
-(function initRejectedDraftMedalTranslations(globalScope) {
-  const target = globalScope.REJECTED_DRAFT_KO_TRANSLATIONS || {};
-  Object.assign(target, {
+(function initRejectedDraftAchievementMedalTranslations(globalScope) {
+  const registry = globalScope.RejectedDraftKoRegistry;
+  registry.registerTranslations( {
     "Selected Favorite": "선택된 즐겨찾기",
     "Set as Favorite: This version will be used permanently, overriding the default redraw cycle.": "즐겨찾기로 설정: 이 버전이 기본 다시 그리기 순서를 덮어쓰고 영구적으로 사용됩니다.",
     "Sketches": "스케치",
     "Sketch": "스케치",
-
     "Multiplies all currency rewards. Increased multiplicatively by Feat Medal Base per purchased Feat Medal. Applied before exponents.": "모든 재화 보상을 곱합니다. 구매한 업적 메달마다 업적 메달 기본값에 따라 곱연산으로 증가합니다. 지수보다 먼저 적용됩니다.",
     "Reduces attack delay for the first attack of a battle against known enemies during auto-battles.": "자동 전투 중 이미 아는 적과 싸울 때 첫 공격의 공격 지연을 줄입니다.",
     "Increases the maximum number of Inspiration stacks you can accumulate (100 base).": "누적 가능한 영감 중첩의 최대치를 증가시킵니다. 기본값은 100입니다.",
     "The maximum amount of Battle Speedup time you can store. Recharges at 1 minute every 2 hours.": "저장할 수 있는 전투 가속 시간의 최대치입니다. 2시간마다 1분씩 재충전됩니다.",
     "Chance for Rough rarity sketches to appear on Redraw. (Highly Recommended for Masterpiece Archive progression)": "다시 그리기에서 초안 등급 스케치가 등장할 확률입니다. 걸작 아카이브 진행에 강력히 권장됩니다.",
     "Lowers the minimum calculated probability threshold required to activate Targeted Redraw.": "타겟 다시 그리기를 활성화하는 데 필요한 계산상 최소 확률 기준을 낮춥니다.",
-
     "Feng Shui": "풍수",
     "Arrangement medals for displaying specific groups of sketches together in the Gallery. Hide unrelated sketches to isolate the group; maxed sketches can be unhidden and still count.": "갤러리에서 특정 스케치 그룹을 함께 표시하는 배치 메달입니다. 관련 없는 스케치는 숨겨 그룹을 분리하세요. 최대치에 도달한 스케치는 숨김 해제해도 계속 인정됩니다.",
-    "General": "일반",
     "Broad progress medals. Most unlock naturally as you play the game and make numbers go up.": "전반적인 진행 메달입니다. 대부분은 게임을 플레이하며 숫자를 키우다 보면 자연스럽게 해금됩니다.",
     "Collection milestones for defeating sketches in each rarity. Each rarity awards medals at 25%, 50%, 75%, and full Glossary completion.": "각 희귀도 스케치를 격파하는 수집 마일스톤입니다. 희귀도마다 용어집 완성도 25%, 50%, 75%, 100%에서 메달을 줍니다.",
     "Specs": "능력치",
@@ -23,7 +20,6 @@
     "Medals for building out the Shop toolkit and putting those tools to work, from unlocking more options to using specialized tools often.": "상점 도구 구성을 확장하고 실제로 사용하는 메달입니다. 더 많은 선택지 해금부터 특수 도구 반복 사용까지 포함합니다.",
     "True Feats": "진정한 업적",
     "Unusual achievements that reward experimentation and out-of-the-box thinking. Some clues are cryptic, but the Medal X-Ray tool can eventually reveal exactly how to earn each one.": "실험과 색다른 사고를 보상하는 특수 업적입니다. 일부 단서는 모호하지만, 메달 X-레이 도구가 결국 각 메달 획득 방법을 정확히 보여줄 수 있습니다.",
-
     "Defeat Awakened Paragon.": "각성 파라곤을 격파하세요.",
     "Remove a total of 1,000,000,000 debuff stacks with Clean Slate.": "클린 슬레이트로 디버프 중첩을 총 1,000,000,000개 제거하세요.",
     "Scroll to the very bottom of the Credits modal.": "크레딧 모달의 맨 아래까지 스크롤하세요.",
@@ -53,6 +49,5 @@
     "Defeat The False Paragon.": "거짓 파라곤을 격파하세요.",
     "Defeat Transcendent Paragon.": "초월 파라곤을 격파하세요.",
     "Go to Glossary, click art icon bottom left of any sketch that has multiple versions, then heart in top right of any version.": "용어집으로 가서 여러 버전이 있는 아무 스케치의 왼쪽 아래 아트 아이콘을 누른 뒤, 아무 버전의 오른쪽 위 하트를 누르세요."
-  });
-  globalScope.REJECTED_DRAFT_KO_TRANSLATIONS = target;
+}, "achievement-medals");
 })(typeof globalThis !== "undefined" ? globalThis : window);

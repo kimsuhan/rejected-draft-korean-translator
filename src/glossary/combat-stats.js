@@ -1,0 +1,38 @@
+(function initRejectedDraftCombatStatGlossary(globalScope) {
+  const registry = globalScope.RejectedDraftKoRegistry;
+  registry.registerGlossary( {
+    "Accuracy": "명중",
+    "Armor": "방어력",
+    "Armor Pen": "방어 관통",
+    "Armor Penetration": "방어 관통",
+    "ATK": "공격",
+    "Attack": "공격",
+    "Attack Speed": "공격 속도",
+    "Block": "방어",
+    "Block Amount": "방어량",
+    "Block Chance": "방어 확률",
+    "Crit Chance": "치명타 확률",
+    "Crit Damage": "치명타 피해",
+    "Crit DMG": "치명타 피해",
+    "Critical Damage": "치명타 피해",
+    "Damage Absorb": "피해 흡수",
+    "Dodge": "회피",
+    "Execute": "처형",
+    "Glancing Blow": "흘리기",
+    "Golden Luck Crit Chance": "황금 행운 치명타 확률",
+    "Golden Luck Crit Damage": "황금 행운 치명타 피해",
+    "HP": "체력",
+    "Inspiration": "영감",
+    "Inspiration Stack Cap": "영감 중첩 상한",
+    "Lifesteal": "생명력 흡수",
+    "Max DMG": "최대 피해",
+    "Max Damage": "최대 피해",
+    "Min Damage": "최소 피해",
+    "Multi Strike Chance": "연타 확률",
+    "Parry Damage": "쳐내기 피해",
+    "Regen": "재생",
+    "SPD": "속도",
+    "Opacity": "차폐",
+    "Debuff Opacity": "디버프 차폐"
+}, "combat-stats");
+})(typeof globalThis !== "undefined" ? globalThis : window);

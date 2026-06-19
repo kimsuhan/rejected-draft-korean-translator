@@ -1,6 +1,6 @@
 (function initRejectedDraftSketchNameTranslations(globalScope) {
-  const target = globalScope.REJECTED_DRAFT_KO_TRANSLATIONS || {};
-  Object.assign(target, {
+  const registry = globalScope.RejectedDraftKoRegistry;
+  registry.registerTranslations( {
     "Abe Linkin": "에이브 링킨",
     "Accessory Assassin": "액세서리 암살자",
     "Adorable Rodent": "사랑스러운 설치류",
@@ -209,6 +209,8 @@
     "Tronp": "트론프",
     "Vanishing Pointless": "사라지는 무의미점",
     "Varmint Vanguard": "해충 선봉대",
+    "V-Wing Bat": "V자날개 박쥐",
+    "V-윙 박쥐": "V자날개 박쥐",
     "Viking Longship": "바이킹 롱십",
     "Vinchy": "빈치",
     "Vintage Biplane": "빈티지 복엽기",
@@ -220,6 +222,5 @@
     "Weakling": "약골",
     "Whistler's Mother (*)": "휘슬러의 어머니 (*)",
     "Wally": "월리"
-  });
-  globalScope.REJECTED_DRAFT_KO_TRANSLATIONS = target;
+}, "sketch-names");
 })(typeof globalThis !== "undefined" ? globalThis : window);

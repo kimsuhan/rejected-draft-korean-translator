@@ -1,6 +1,6 @@
-(function initRejectedDraftStatTranslations(globalScope) {
-  const target = globalScope.REJECTED_DRAFT_KO_TRANSLATIONS || {};
-  Object.assign(target, {
+(function initRejectedDraftStatTooltipTranslations(globalScope) {
+  const registry = globalScope.RejectedDraftKoRegistry;
+  registry.registerTranslations( {
     "Percentage of final damage that is mitigated. Applied after all other reductions and armor.": "최종 피해 중 완화되는 비율입니다. 다른 모든 감소 효과와 방어력 이후에 적용됩니다.",
     "Percent Chance to negate a successful Dodge or successful Parry by your target. Each is checked separately.": "대상의 성공한 회피 또는 쳐내기를 무효화할 확률입니다. 각각 별도로 판정됩니다.",
     "Accuracy (Unaffected by Decay Factor) Percent Chance to negate a successful Dodge or successful Parry by your target. Each is checked separately.": "명중 (보상 감소율의 영향을 받지 않음)\n대상의 성공한 회피 또는 쳐내기를 무효화할 확률입니다. 각각 별도로 판정됩니다.",
@@ -110,6 +110,5 @@
     "Armor Flat damage subtracted from every incoming hit after all other calculations. Reduced by the attacker's Armor Penetration.": "방어력\n다른 모든 계산 이후 받는 모든 타격에서 차감되는 고정 피해량입니다. 공격자의 방어 관통으로 감소합니다.",
     "Most {rarity} sketches present in a single redraw.": "한 번의 다시 그리기에 등장한 {rarity} 스케치의 최대 수입니다.",
     "{name} {action} {count} times": "{name} {action} {count}회"
-  });
-  globalScope.REJECTED_DRAFT_KO_TRANSLATIONS = target;
+}, "stat-tooltips");
 })(typeof globalThis !== "undefined" ? globalThis : window);

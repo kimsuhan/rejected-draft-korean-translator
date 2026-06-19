@@ -1,6 +1,6 @@
-(function initRejectedDraftSkillTranslations(globalScope) {
-  const target = globalScope.REJECTED_DRAFT_KO_TRANSLATIONS || {};
-  Object.assign(target, {
+(function initRejectedDraftCombatSkillTranslations(globalScope) {
+  const registry = globalScope.RejectedDraftKoRegistry;
+  registry.registerTranslations( {
     "Randomizer will now only pick a random sketch from among sketches in same priority of current sketch or better.": "무작위화는 이제 현재 스케치와 같은 우선순위 또는 더 높은 우선순위의 스케치 중에서만 무작위로 선택합니다.",
     "Shows the number of sketches for each rarity that have not reached their maximum victories in the current redraw on the Gallery rarity toggles.": "갤러리 희귀도 토글에 이번 다시 그리기에서 최대 승리에 도달하지 않은 각 희귀도별 스케치 수를 표시합니다.",
     "Focus your search by ignoring one specific rarity when searching for new sketches.": "새 스케치를 찾을 때 특정 희귀도 하나를 제외해 검색 범위를 좁힙니다.",
@@ -26,7 +26,6 @@
     "Affordable": "구매 가능",
     "New": "신규",
     "Search...": "검색...",
-
     "Marker Anomaly": "마커 변칙",
     "Photon Singularity": "광자 특이점",
     "Industrial Overclock": "산업 오버클럭",
@@ -45,7 +44,6 @@
     "Rough Overload": "초안 과부하",
     "Rough Deduction": "초안 추론",
     "Rough Beginnings": "초안의 시작",
-
     "Efficient Shading": "효율적인 명암",
     "Charcoal Degen": "목탄 디젠",
     "Charcoal Resonance": "목탄 공명",
@@ -98,7 +96,6 @@
     "Shop purchases no longer consume currency": "상점 구매가 더 이상 재화를 소모하지 않습니다",
     "Free Market": "자유 시장",
     "Spray Anomaly": "스프레이 변칙",
-
     "Thick Canvas": "두꺼운 캔버스",
     "Bold Strokes": "굵은 붓질",
     "Rapid Execution": "빠른 실행",
@@ -149,6 +146,5 @@
     "Skill Toggles": "스킬 토글",
     "The wax is so dense it begins to collapse under its own artistic weight.": "왁스가 너무 조밀해 자신의 예술적 무게에 짓눌려 붕괴하기 시작합니다.",
     "Wax Singularity": "왁스 특이점"
-  });
-  globalScope.REJECTED_DRAFT_KO_TRANSLATIONS = target;
+}, "combat-skills");
 })(typeof globalThis !== "undefined" ? globalThis : window);

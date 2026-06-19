@@ -1,6 +1,6 @@
 (function initRejectedDraftSketchFlavorTranslations(globalScope) {
-  const target = globalScope.REJECTED_DRAFT_KO_TRANSLATIONS || {};
-  Object.assign(target, {
+  const registry = globalScope.RejectedDraftKoRegistry;
+  registry.registerTranslations( {
     "Four scores and seven sketches ago.": "네 스코어하고 일곱 스케치 전.",
     "Pouches hiding poor anatomy.": "엉성한 해부 구조를 가리는 주머니들.",
     "In loving memory.": "사랑하는 기억을 담아.",
@@ -359,6 +359,5 @@
     "Geometry, anatomy, and four arms to punch you with.": "기하학, 해부학, 그리고 널 때릴 팔 네 개.",
     "A little less conversation, a little more action lines.": "말은 조금 줄이고, 액션 선은 조금 더.",
     "Thick layers of charcoal imitating thick layers of oil.": "두꺼운 유화층을 흉내 내는 두꺼운 목탄층."
-  });
-  globalScope.REJECTED_DRAFT_KO_TRANSLATIONS = target;
+}, "sketch-flavor");
 })(typeof globalThis !== "undefined" ? globalThis : window);

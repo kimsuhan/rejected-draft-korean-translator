@@ -1,7 +1,9 @@
 const STORAGE_KEY = "rejectedDraftKoEnabled";
 const MISSING_KEY = "rejectedDraftKoMissing";
+const GAME_URL = "https://kuzzigames.com/rejected_draft/";
 
 const enabledInput = document.querySelector("#enabled");
+const openGameButton = document.querySelector("#openGame");
 const copyMissingButton = document.querySelector("#copyMissing");
 const statusEl = document.querySelector("#status");
 
@@ -19,14 +21,18 @@ enabledInput.addEventListener("change", () => {
   });
 });
 
+openGameButton.addEventListener("click", () => {
+  chrome.tabs.create({ url: GAME_URL });
+});
+
 copyMissingButton.addEventListener("click", async () => {
   chrome.storage.local.get({ [MISSING_KEY]: [] }, async (result) => {
     const missing = Array.isArray(result[MISSING_KEY]) ? result[MISSING_KEY] : [];
     if (!missing.length) {
-      setStatus("수집된 미번역 문구가 없습니다.");
+      setStatus("수집된 영어 문구가 없습니다.");
       return;
     }
     await navigator.clipboard.writeText(missing.join("\n"));
-    setStatus(`${missing.length}개 문구를 복사했습니다.`);
+    setStatus(`${missing.length}개 영어 문구를 복사했습니다.`);
   });
 });
